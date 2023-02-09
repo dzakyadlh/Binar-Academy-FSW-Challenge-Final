@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 80px;
+    padding: 0 10rem;
+    background-color: #E7F2F8;
+    color: black;
+}
+
+header img {
+    width: 100px;
+}
+
+nav a {
+    margin: 0 2rem;
+    color: black;
+    text-decoration: none;
+}
+
+button {
+    padding: 10px;
+    width: 130px;
+    cursor: pointer;
+    background-color: #5551FF;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+button a {
+    color: #CFCFCF;
+    text-align: center;
+}
