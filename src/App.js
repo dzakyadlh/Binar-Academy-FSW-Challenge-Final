@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import GameList from "./pages/GameList";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/Footer/footer";
+import GameDetails from "./pages/GameDetails";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="gamelist" element={<GameList />} />
+        <Route path="gamedetails" element={<GameDetails />} />
       </Routes>
       <Footer />
     </React.Fragment>
