@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/Footer/footer";
+import GameDetails from "./pages/GameDetails";
 
 import "./App.css";
 
@@ -23,8 +24,12 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="gamelist" element={<GameList />} />
+<<<<<<< HEAD
         <Route path="landingPage" element={<LandingPage />} />
         <Route path="/" element={<HomePage />} />
+=======
+        <Route path="gamedetails" element={<GameDetails />} />
+>>>>>>> 93a3a64c99a1d277e3fc0ccb64418027bf44613d
       </Routes>
       <Footer />
     </React.Fragment>
