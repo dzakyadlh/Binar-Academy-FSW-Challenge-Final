@@ -1,0 +1,52 @@
+.right img {
+  width: 110vh;
+  padding-left: 100px;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffff;
+}
+
+.signin {
+  padding-top: 20px;
+}
+
+.logoo {
+  display: flex;
+  align-items: center;
+  justify-content: first baseline;
+}
+
+/* Responsive Breakpoint */
+
+@media screen and (max-width: 1024px) {
+  .right img {
+    width: 100vh;
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .right img {
+    width: 100vh;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .right img {
+    width: 100vh;
+    padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 1524px) {
+  .right img {
+    width: 100vh;
+    padding-left: 100px;
+  }
+}
