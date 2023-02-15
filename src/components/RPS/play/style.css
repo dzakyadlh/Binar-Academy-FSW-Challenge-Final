@@ -1,0 +1,70 @@
+.play {
+  width: 100%;
+
+  position: relative;
+  margin-top: 3.125rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.triangle {
+  position: absolute;
+  align-self: center;
+  margin-top: 4.375rem;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  height: 160px;
+  width: 160px;
+  border: 18px solid;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.icon--paper {
+  background-color: #fff;
+  background-image: url(../../../assets/kertas.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-color: #5551ff;
+  transform: translateX(2rem);
+  background-size: 50%;
+}
+
+.icon--paper:hover {
+  transform: translateX(2rem) scale(1.1);
+}
+
+.icon--scissors {
+  background-color: #fff;
+  background-image: url(../../../assets/gunting.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-color: #5551ff;
+  transform: translateX(9rem);
+  background-size: 50%;
+}
+
+.icon--scissors:hover {
+  transform: translateX(9rem) scale(1.1);
+}
+
+.icon--rock {
+  background-color: #fff;
+  background-image: url(../../../assets/batu.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-color: #5551ff;
+  transform: translateX(-10rem) translateY(15rem);
+  background-size: 50%;
+}
+
+.icon--rock:hover {
+  transform: translateX(-10rem) translateY(15rem) scale(1.1);
+}

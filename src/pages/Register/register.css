@@ -1,0 +1,24 @@
+.rightS img {
+  padding-left: 100px;
+  width: 110vh;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffff;
+}
+
+.signin {
+  padding-top: 20px;
+  color: #a7a7a7;
+}
+
+.logoo {
+  display: flex;
+  justify-content: first baseline;
+  align-items: center;
+  margin-bottom: 40px;
+}

@@ -1,0 +1,16 @@
+.score-box {
+  padding: 0.75rem 2.5rem;
+  background-color: #5551ff;
+  color: #fbff51;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.score-box__score {
+  color: #2f2e41;
+  font-size: 3.5rem;
+  font-weight: 700;
+}

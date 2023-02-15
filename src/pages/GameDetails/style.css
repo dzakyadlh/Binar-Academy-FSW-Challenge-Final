@@ -1,0 +1,16 @@
+body {
+  background-color: #e7f2f8;
+}
+
+.container-gd {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5rem 10rem;
+  gap: 30px;
+}
+
+.container-gd a {
+  text-decoration: none;
+  color: white;
+}
