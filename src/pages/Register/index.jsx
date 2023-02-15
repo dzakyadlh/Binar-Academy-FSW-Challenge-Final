@@ -104,6 +104,11 @@ const Register = () => {
             {success}
           </Alert>
         )}
+        {error && (
+          <Alert severity="error" style={{ marginTop: "10px" }}>
+            {error}
+          </Alert>
+        )}
       </CardContent>
       <div className="rightS">
         <img src={RegisImg} alt=""></img>

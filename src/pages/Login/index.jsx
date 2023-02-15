@@ -104,7 +104,7 @@ const Login = () => {
           </Alert>
         )}
         {error && (
-          <Alert style={{ marginTop: "20px" }} severity="error">
+          <Alert style={{ marginTop: "10px" }} severity="error">
             {error}
           </Alert>
         )}
