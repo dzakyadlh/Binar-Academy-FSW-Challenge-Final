@@ -19,58 +19,61 @@ import { Container } from "react-bootstrap";
 
 const HomePage = () => {
   return (
-    <Container>
-      <Card
-        sx={{
-          display: "flex",
-          width: 0.8,
-          borderRadius: "10px",
-        }}
-      >
-        <Box sx={{ width: "50%" }}>
-          <CardContent>
-            <Typography
-              gutterBottom
-              variant="h2"
-              component="div"
-              sx={{ width: 1 }}
-              style={{ fontWeight: "bold" }}
-            >
-              Welcome!!
-            </Typography>
-            <p>
-              Feel free to play games on our website after you are logged in !!
-            </p>
-          </CardContent>
-          <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
-            <Button
-              size="md"
-              style={{
-                frontWeight: "bold",
-                backgroundColor: "black",
-                color: "white",
-                marginLeft: "10px",
-              }}
-            >
-              about us
-            </Button>
-          </CardActions>
-        </Box>
-        <CardMedia
+    <React.Fragment>
+      <div className="container-home">
+        <Card
           sx={{
-            width: "50%",
-            height: "450px",
-            maxWidth: "50%",
-            backgroundPosition: "top",
-          }}
-          image={imgBp}
-          style={{
-            objectFit: "cover",
+            display: "flex",
+            width: 1,
             borderRadius: "10px",
           }}
-        ></CardMedia>
-      </Card>
-      <div className="second-container">
+        >
+          <Box sx={{ width: "50%" }}>
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h2"
+                component="div"
+                sx={{ width: 1 }}
+                style={{ fontWeight: "bold" }}
+              >
+                Welcome!!
+              </Typography>
+              <p>
+                Feel free to play games on our website after you are logged in
+                !!
+              </p>
+            </CardContent>
+            <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
+              <Button
+                size="md"
+                style={{
+                  frontWeight: "bold",
+                  backgroundColor: "black",
+                  color: "white",
+                  marginLeft: "10px",
+                }}
+              >
+                about us
+              </Button>
+            </CardActions>
+          </Box>
+          <CardMedia
+            sx={{
+              width: "50%",
+              height: "450px",
+              maxWidth: "50%",
+              backgroundPosition: "top",
+            }}
+            image={imgBp}
+            style={{
+              objectFit: "cover",
+              borderRadius: "10px",
+            }}
+          ></CardMedia>
+        </Card>
+      </div>
+      <div className="container-home-2">
         <Grid container spacing={24} sx={{ columnGap: "" }}>
           <Grid item xs={4}>
             <Card sx={{ width: "100%" }}>
@@ -92,7 +95,6 @@ const HomePage = () => {
                 style={{
                   padding: "20px 20px",
                   borderRadius: "25px",
-                  width: "380px",
                   height: "300px",
                 }}
               />
@@ -118,7 +120,6 @@ const HomePage = () => {
                 style={{
                   padding: "20px 20px",
                   borderRadius: "25px",
-                  width: "380px",
                   height: "300px",
                 }}
               />
@@ -144,7 +145,6 @@ const HomePage = () => {
                 style={{
                   padding: "20px 20px",
                   borderRadius: "25px",
-                  width: "380px",
                   height: "300px",
                 }}
               />
@@ -152,7 +152,7 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </div>
-    </Container>
+    </React.Fragment>
   );
 };
 

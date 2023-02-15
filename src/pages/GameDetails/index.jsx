@@ -31,16 +31,16 @@ const GameDetail = () => {
   // console.log(data);
 
   return (
-    <Container>
-      <Card sx={{ display: "flex", width: 0.83, height: "600px" }}>
+    <div className="container-gd">
+      <Card sx={{ display: "flex", width: 1, height: "450px" }}>
         <Box sx={{ maxWidth: 1 / 2 }}>
           <CardContent>
             <Typography
               gutterBottom
               variant="h2"
               component="div"
-              sx={{ width: 1 }}
-              style={{ fontWeight: "bold", marginLeft: "15px" }}
+              sx={{ width: 1, ml: 1 }}
+              style={{ fontWeight: "bold" }}
             >
               Rock Paper Scissors Game
             </Typography>
@@ -48,8 +48,7 @@ const GameDetail = () => {
               gutterBottom
               variant="h6"
               component="div"
-              style={{ marginLeft: "15px" }}
-              sx={{ width: 1 }}
+              sx={{ width: 0.9, ml: 1 }}
             >
               The classic game that you have been playing since you were 5 ! the
               rules are simple, 2 players choose their gesture, rock beats
@@ -65,10 +64,10 @@ const GameDetail = () => {
                 backgroundColor: "black",
                 color: "white",
                 width: "40%",
-                marginLeft: "20px",
               }}
+              sx={{ ml: 1 }}
             >
-              PLAY GAME
+              <a href="/rps">PLAY GAME</a>
             </Button>
           </CardActions>
         </Box>
@@ -84,7 +83,7 @@ const GameDetail = () => {
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
         />
       </Card>
-    </Container>
+    </div>
   );
 };
 

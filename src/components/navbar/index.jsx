@@ -14,16 +14,24 @@ function Navbar() {
       setIsLandingPage(false);
     }
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
     <header>
-      <img src={imgLogo}></img>
+      <img src={imgLogo} onClick={() => handleClick("/")}></img>
       <nav>
-        <a href="/#">Our Story</a>
-        <a href="/#">Games</a>
-        <a href="/#">Support</a>
-        <a href="/#">Profile</a>
+        <a href="#">Our Story</a>
+        <Link to="/gamelist">Games</Link>
+        <a href="#">Support</a>
+        <Link to="/login">Login</Link>
         <button className="nav-btn">
-          <Link to="/register">{isLandingPage ? "Register" : "LogOut"}</Link>
+          {/* <Link to="/register">{isLandingPage ? "Register" : "LogOut"}</Link> */}
+          <Link to="/register">Register</Link>
         </button>
       </nav>
     </header>

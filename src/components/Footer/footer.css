@@ -4,13 +4,12 @@
   box-sizing: border-box;
 }
 
-body {
-  min-height: 100%;
-}
-
 .footer-container {
   background-color: black;
   padding-bottom: 4rem;
+  /* position: absolute; */
+  margin-top: auto;
+  width: 100vw;
 }
 
 .footer {
@@ -19,7 +18,6 @@ body {
   height: 8vh;
   color: white;
   display: flex;
-  margin-top: 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;

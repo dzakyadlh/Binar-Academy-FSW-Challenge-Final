@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import imgRPS from "../../assets/RPS.png";
 import imgNBA from "../../assets/NBA2K23.jpg";
+import { useNavigate } from "react-router";
 
 import "./style.css";
 import { Container } from "react-bootstrap";
@@ -30,23 +31,29 @@ const GameList = () => {
 
   // console.log(data);
 
+  const navigate = useNavigate();
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
-    <Container>
+    <div className="container-game-list">
       <Typography variant="h3">Game List</Typography>
-      <Card sx={{ display: "flex", width: 0.8 }}>
+      <Card sx={{ display: "flex", width: 1, minHeight: "400px" }}>
         <Box sx={{ maxWidth: 1 / 2 }}>
           <CardContent>
             <Typography
               gutterBottom
-              variant="h2"
+              fontSize="96px"
               component="div"
-              sx={{ width: 1 }}
+              sx={{ width: 1, mb: 0 }}
               style={{ fontWeight: "bold" }}
             >
               Rock Paper Scissors Game
             </Typography>
           </CardContent>
-          <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
+          <CardActions>
             <Button
               size="md"
               style={{
@@ -55,6 +62,7 @@ const GameList = () => {
                 color: "white",
                 marginLeft: "10px",
               }}
+              onClick={() => handleClick("/gamedetails")}
             >
               Details
             </Button>
@@ -68,7 +76,7 @@ const GameList = () => {
                 marginLeft: "20px",
               }}
             >
-              PLAY GAME
+              <a href="/rps">PLAY GAME</a>
             </Button>
           </CardActions>
         </Box>
@@ -84,20 +92,20 @@ const GameList = () => {
           style={{ objectFit: "contain" }}
         />
       </Card>
-      <Card sx={{ display: "flex", width: 0.8 }}>
-        <Box sx={{ maxWidth: 1 / 2 }}>
+      <Card sx={{ display: "flex", width: 1, minHeight: "400px" }}>
+        <Box sx={{ width: "50%" }}>
           <CardContent>
             <Typography
               gutterBottom
-              variant="h2"
+              fontSize="96px"
               component="div"
-              sx={{ width: 1 }}
+              sx={{ width: 1, mb: 0 }}
               style={{ fontWeight: "bold" }}
             >
-              Rock Paper Scissors Game
+              NBA 2K23
             </Typography>
           </CardContent>
-          <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
+          <CardActions>
             <Button
               size="md"
               style={{
@@ -106,6 +114,7 @@ const GameList = () => {
                 color: "white",
                 marginLeft: "10px",
               }}
+              onClick={() => handleClick("/gamedetails")}
             >
               Details
             </Button>
@@ -135,7 +144,7 @@ const GameList = () => {
           style={{ objectFit: "contain" }}
         />
       </Card>
-    </Container>
+    </div>
   );
 };
 
