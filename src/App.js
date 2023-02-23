@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import GameDetails from "./pages/GameDetails";
 import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
+import About from "./pages/About";
 
 import "./App.css";
 
@@ -41,6 +42,7 @@ const App = () => {
               <Game myChoice={myChoice} score={score} setScore={setScore} />
             }
           />
+          <Route path="about" element={<About />} />
         </Routes>
         <Footer />
       </div>
