@@ -35,7 +35,7 @@ const Login = () => {
 
         setTimeout(() => {
           setSuccess("");
-          Navigate("/");
+          Navigate("/home");
         }, 2000);
       })
 

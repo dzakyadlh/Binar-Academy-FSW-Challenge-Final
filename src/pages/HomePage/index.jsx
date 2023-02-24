@@ -35,14 +35,11 @@ const HomePage = () => {
                 variant="h2"
                 component="div"
                 sx={{ width: 1 }}
-                style={{ fontWeight: "bold" }}
+                style={{ fontWeight: "bold", color: "#5551FF" }}
               >
-                Welcome!!
+                <span style={{ color: "black" }}>Hi,</span> johndoe
               </Typography>
-              <p>
-                Feel free to play games on our website after you are logged in
-                !!
-              </p>
+              <p>Start playing games on our website now!!</p>
             </CardContent>
             <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
               <Button
@@ -74,14 +71,19 @@ const HomePage = () => {
         </Card>
       </div>
       <div className="container-home-2">
-        <Grid container spacing={24} sx={{ columnGap: "" }}>
+        <Grid container spacing={3}>
           <Grid item xs={4}>
             <Card sx={{ width: "100%" }}>
               <CardContent>
                 <Typography
                   gutterBottom
                   variant="h4"
-                  style={{ fontWeight: "bold" }}
+                  style={{
+                    fontWeight: "bold",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
                   component="div"
                 >
                   Rock,Paper &Scissors
