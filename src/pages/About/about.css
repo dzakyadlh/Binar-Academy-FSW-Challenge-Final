@@ -1,0 +1,41 @@
+.about-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.container-35 {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  margin: 1.5vh;
+  box-sizing: border-box;
+}
+.container-40 {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: 1.5vh;
+  padding: 1.5vh 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-size: 50px;
+  margin: 2vh 0;
+}
+p {
+  margin: 1.5vh 0;
+  font-size: 14px;
+}
+li {
+  margin: 0 3vh;
+  font-size: 14px;
+}
+.aboutus {
+  width: 45vw;
+}
+.contactus {
+  background-color: black;
+  color: white;
+  margin-top: 3vh;
+  padding: 8px;
+}
