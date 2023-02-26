@@ -29,8 +29,8 @@ const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="gamelist" element={<GameList />} />
-          <Route path="landingPage" element={<LandingPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="gamedetails" element={<GameDetails />} />
           <Route
             path="/rps"
