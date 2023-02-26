@@ -74,14 +74,19 @@ const LandingPage = () => {
         </Card>
       </div>
       <div className="container-lp-2">
-        <Grid container spacing={24} sx={{ columnGap: "" }}>
+        <Grid container spacing={3}>
           <Grid item xs={4}>
             <Card sx={{ width: "100%" }}>
               <CardContent>
                 <Typography
                   gutterBottom
                   variant="h4"
-                  style={{ fontWeight: "bold" }}
+                  style={{
+                    fontWeight: "bold",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
                   component="div"
                 >
                   Rock,Paper &Scissors
