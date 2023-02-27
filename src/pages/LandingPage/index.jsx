@@ -89,7 +89,7 @@ const LandingPage = () => {
                   }}
                   component="div"
                 >
-                  Rock,Paper &Scissors
+                  Rock, Paper & Scissors
                 </Typography>
               </CardContent>
               <CardMedia

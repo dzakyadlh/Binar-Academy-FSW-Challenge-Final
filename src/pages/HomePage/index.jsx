@@ -18,6 +18,7 @@ import "./home.css";
 import { Container } from "react-bootstrap";
 
 const HomePage = () => {
+  const user = localStorage.getItem("username");
   return (
     <React.Fragment>
       <div className="container-home">
@@ -37,7 +38,7 @@ const HomePage = () => {
                 sx={{ width: 1 }}
                 style={{ fontWeight: "bold", color: "#5551FF" }}
               >
-                <span style={{ color: "black" }}>Hi,</span> johndoe
+                <span style={{ color: "black" }}>Hi,</span> {user}
               </Typography>
               <p>Start playing games on our website now!!</p>
             </CardContent>
@@ -86,7 +87,7 @@ const HomePage = () => {
                   }}
                   component="div"
                 >
-                  Rock,Paper &Scissors
+                  Rock, Paper & Scissors
                 </Typography>
               </CardContent>
               <CardMedia
