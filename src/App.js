@@ -6,7 +6,9 @@ import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/navbar";
 import Footer from "./components/Footer";
-import GameDetails from "./pages/GameDetails";
+import GameDetailsRPS from "./pages/GameDetails/rps";
+import GameDetailsNBA from "./pages/GameDetails/nba";
+import GameDetailsValo from "./pages/GameDetails/valo";
 import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
 import About from "./pages/About";
@@ -48,7 +50,9 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path="gamedetails" element={<GameDetails />} />
+          <Route path="gamedetails/1" element={<GameDetailsRPS />} />
+          <Route path="gamedetails/2" element={<GameDetailsNBA />} />
+          <Route path="gamedetails/3" element={<GameDetailsValo />} />
           <Route
             path="/rps"
             element={

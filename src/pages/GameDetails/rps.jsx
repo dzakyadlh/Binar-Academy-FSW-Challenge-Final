@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as React from "react";
+import axios from "axios";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,21 +15,17 @@ import "./style.css";
 import { Container } from "react-bootstrap";
 
 const GameDetail = () => {
-  // const [data, setData] = useState([]);
+  const [gamelist, setGamelist] = useState([]);
 
-  // const fetchData = () => {
-  //     fetch("http://localhost:5000/gamelist/get")
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //         setData(result.data);
-  //     });
-  // };
+  const handleFetch = () => {
+    axios.get("http://localhost:5000/gamelist").then((res) => {
+      setGamelist(res);
+    });
+  };
 
-  // useEffect(() => {
-  //     fetchData();
-  // }, []);
-
-  // console.log(data);
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
   return (
     <div className="container-gd">
@@ -42,7 +39,7 @@ const GameDetail = () => {
               sx={{ width: 1, ml: 1 }}
               style={{ fontWeight: "bold" }}
             >
-              Rock Paper Scissors Game
+              {gamelist?.data?.result[0].name}
             </Typography>
             <Typography
               gutterBottom
@@ -50,10 +47,7 @@ const GameDetail = () => {
               component="div"
               sx={{ width: 0.9, ml: 1 }}
             >
-              The classic game that you have been playing since you were 5 ! the
-              rules are simple, 2 players choose their gesture, rock beats
-              scissors, scissors beats paper, and paper beats rock. Win to earn
-              points !! and see yourself on the leaderboard.
+              {gamelist?.data?.result[0].game_detail.detail}
             </Typography>
           </CardContent>
           <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
@@ -78,7 +72,7 @@ const GameDetail = () => {
             height: "inherit",
             width: "inherit",
           }}
-          image={imgRPS}
+          image={gamelist?.data?.result[0].image}
           title="game image"
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
         />

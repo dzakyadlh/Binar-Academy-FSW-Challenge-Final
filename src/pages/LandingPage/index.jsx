@@ -1,5 +1,6 @@
-import { useState } from "react";
 import * as React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Card,
   Box,
@@ -18,6 +19,19 @@ import "./landing.css";
 import { Container } from "react-bootstrap";
 
 const LandingPage = () => {
+  const [gamelist, setGamelist] = useState([]);
+
+  const handleFetch = () => {
+    axios.get("http://localhost:5000/gamelist").then((res) => {
+      setGamelist(res);
+      console.log(res.data.result);
+    });
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
+
   return (
     <React.Fragment>
       <div className="container-lp">
@@ -75,86 +89,38 @@ const LandingPage = () => {
       </div>
       <div className="container-lp-2">
         <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <Card sx={{ width: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
+          {gamelist?.data?.result?.map((row, index) => (
+            <Grid key={index} item xs={4}>
+              <Card sx={{ width: "100%" }}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                    }}
+                    component="div"
+                  >
+                    {row.name}
+                  </Typography>
+                </CardContent>
+                <CardMedia
+                  component="img"
+                  alt=""
+                  height="100%"
+                  image={row.image}
                   style={{
-                    fontWeight: "bold",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
+                    padding: "20px 20px",
+                    borderRadius: "25px",
+                    height: "300px",
                   }}
-                  component="div"
-                >
-                  Rock, Paper & Scissors
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgRps}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  style={{ fontWeight: "bold" }}
-                  component="div"
-                >
-                  NBA 2K23
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgNba}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  style={{ fontWeight: "bold" }}
-                  component="div"
-                >
-                  VALORANT
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgVal}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
+                />
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </div>
     </React.Fragment>
