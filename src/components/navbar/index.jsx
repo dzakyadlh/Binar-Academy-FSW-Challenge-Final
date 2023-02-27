@@ -19,23 +19,27 @@ function Navbar() {
 
   return (
     <header>
-      <img src={imgLogo} onClick={() => handleClick("/")}></img>
+      <img
+        src={imgLogo}
+        onClick={() => (auth ? handleClick("/home") : handleClick("/"))}
+      ></img>
       <nav>
         <Link to="/about">Our Story</Link>
         <Link to="/gamelist">Games</Link>
         <a href="#">Support</a>
         {auth ? (
-          <button className="nav-btn">
-            <Link onClick={logout} to="/login">
-              Logout
-            </Link>
-          </button>
+          <>
+            <a href="#">Profile</a>
+            <button className="nav-btn">
+              <Link onClick={logout} to="/login">
+                Logout
+              </Link>
+            </button>
+          </>
         ) : (
           <>
             {" "}
-            <button className="nav-btn">
-              <Link to="/register">Register</Link>
-            </button>
+            <Link to="/register">Sign Up</Link>
             <button className="nav-btn">
               <Link to="/login">Login</Link>
             </button>

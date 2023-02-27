@@ -10,16 +10,26 @@ import GameDetails from "./pages/GameDetails";
 import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
 import About from "./pages/About";
+import PrivateRoute from "./components/privateRoute";
 
 import "./App.css";
 
 import { useNavigate } from "react-router";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
 const App = () => {
   const [myChoice, setMyChoice] = useState("");
   const [score, setScore] = useState(0);
+
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const pathname = window.location.pathname;
+
+  useEffect(() => {
+    if (token && pathname == "/login") navigate("/home");
+    if (token && pathname == "/") navigate("/home");
+  }, [pathname]);
 
   return (
     <React.Fragment>
@@ -30,16 +40,29 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="gamelist" element={<GameList />} />
           <Route path="/" element={<LandingPage />} />
-          <Route path="home" element={<HomePage />} />
+          <Route
+            path="home"
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
           <Route path="gamedetails" element={<GameDetails />} />
           <Route
             path="/rps"
-            element={<Play setMyChoice={setMyChoice} score={score} />}
+            element={
+              <PrivateRoute>
+                <Play setMyChoice={setMyChoice} score={score} />
+              </PrivateRoute>
+            }
           />
           <Route
             path="/rps/game"
             element={
-              <Game myChoice={myChoice} score={score} setScore={setScore} />
+              <PrivateRoute>
+                <Game myChoice={myChoice} score={score} setScore={setScore} />
+              </PrivateRoute>
             }
           />
           <Route path="about" element={<About />} />

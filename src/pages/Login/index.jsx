@@ -48,6 +48,12 @@ const Login = () => {
       });
   };
 
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="app-container">
       <CardContent
@@ -71,6 +77,7 @@ const Login = () => {
           fullWidth
           value={user}
           onChange={(e) => setUser(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <TextField
           style={{ marginTop: "15px" }}
@@ -80,6 +87,7 @@ const Login = () => {
           fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <Button
           style={{
