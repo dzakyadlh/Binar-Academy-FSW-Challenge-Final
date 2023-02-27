@@ -31,6 +31,7 @@ button {
   border: none;
   outline: none;
   border-radius: 10px;
+  margin-left: 2rem;
 }
 
 button:hover {

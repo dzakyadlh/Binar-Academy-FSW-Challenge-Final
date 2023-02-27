@@ -5,15 +5,11 @@ import { useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
 
 function Navbar() {
-  const [isLandingPage, setIsLandingPage] = useState(false);
-
-  useEffect(() => {
-    if (window.location.pathname === "/landingPage") {
-      setIsLandingPage(true);
-    } else {
-      setIsLandingPage(false);
-    }
-  }, []);
+  const auth = localStorage.getItem("token");
+  const logout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
 
   const navigate = useNavigate();
 
@@ -23,16 +19,32 @@ function Navbar() {
 
   return (
     <header>
-      <img src={imgLogo} onClick={() => handleClick("/")}></img>
+      <img
+        src={imgLogo}
+        onClick={() => (auth ? handleClick("/home") : handleClick("/"))}
+      ></img>
       <nav>
-        <a href="#">Our Story</a>
+        <Link to="/about">Our Story</Link>
         <Link to="/gamelist">Games</Link>
         <a href="#">Support</a>
-        <Link to="/login">Login</Link>
-        <button className="nav-btn">
-          {/* <Link to="/register">{isLandingPage ? "Register" : "LogOut"}</Link> */}
-          <Link to="/register">Register</Link>
-        </button>
+        {auth ? (
+          <>
+            <a href="#">Profile</a>
+            <button className="nav-btn">
+              <Link onClick={logout} to="/login">
+                Logout
+              </Link>
+            </button>
+          </>
+        ) : (
+          <>
+            {" "}
+            <Link to="/register">Sign Up</Link>
+            <button className="nav-btn">
+              <Link to="/login">Login</Link>
+            </button>
+          </>
+        )}
       </nav>
     </header>
   );

@@ -13,7 +13,7 @@ import LoginImg from "../../assets/login.png";
 import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -22,13 +22,14 @@ const Login = () => {
   const token = localStorage.getItem("token");
 
   const url = window.location.pathname;
-  console.log(token);
+  // console.log(token);
 
   const handleLogin = () => {
-    const payload = { email, password };
+    const payload = { user, password };
     axios
       .post("http://localhost:5000/auth/login", payload)
       .then((res) => {
+        localStorage.setItem("username", res.data.data.username);
         localStorage.setItem("token", res.data.data.token);
         console.log(res.data.data.token);
         setSuccess(res.data.status);
@@ -45,6 +46,12 @@ const Login = () => {
           setError("");
         }, 2000);
       });
+  };
+
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
   };
 
   return (
@@ -64,12 +71,13 @@ const Login = () => {
         <p>Login to access all the features</p>
         <TextField
           style={{ marginTop: "15px" }}
-          label="Email"
+          label="Email / Username"
           variant="standard"
           width="20px"
           fullWidth
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <TextField
           style={{ marginTop: "15px" }}
@@ -79,6 +87,7 @@ const Login = () => {
           fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <Button
           style={{

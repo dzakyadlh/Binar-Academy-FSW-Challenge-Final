@@ -19,8 +19,6 @@ const Register = () => {
     axios
       .post("http://localhost:5000/auth/register", payload)
       .then((res) => {
-        localStorage.setItem("token", res.data.data.token);
-        console.log(res.data.data);
         setSuccess(res.data.status);
 
         setTimeout(() => {
@@ -39,6 +37,12 @@ const Register = () => {
       });
   };
 
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      handleRegister();
+    }
+  };
+
   return (
     <div className="app-container">
       <CardContent
@@ -53,16 +57,17 @@ const Register = () => {
           <img src={LogoImg} alt="" width="180px"></img>
         </div>
         <h1>Create an account</h1>
-        <p>Create an account to access</p>
-        <p>all the features</p>
+        <p>Create an account to access all the features</p>
+
         <TextField
           style={{ marginTop: "15px" }}
-          label="Name"
+          label="Username"
           variant="standard"
           width="20px"
           fullWidth
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <TextField
           style={{ marginTop: "15px" }}
@@ -71,6 +76,7 @@ const Register = () => {
           fullWidth
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <TextField
           style={{ marginTop: "15px" }}
@@ -80,6 +86,7 @@ const Register = () => {
           fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={handleKeypress}
         />
         <Button
           style={{
