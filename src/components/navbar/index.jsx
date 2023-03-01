@@ -29,7 +29,7 @@ function Navbar() {
         <a href="#">Support</a>
         {auth ? (
           <>
-            <a href="#">Profile</a>
+            <a href="/profile">Profile</a>
             <button className="nav-btn">
               <Link onClick={logout} to="/login">
                 Logout
