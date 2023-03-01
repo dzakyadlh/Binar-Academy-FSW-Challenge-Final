@@ -29,7 +29,9 @@ const Login = () => {
     axios
       .post("http://localhost:5000/auth/login", payload)
       .then((res) => {
+        localStorage.setItem("id", res.data.data.id);
         localStorage.setItem("username", res.data.data.username);
+        localStorage.setItem("email", res.data.data.email);
         localStorage.setItem("token", res.data.data.token);
         console.log(res.data.data.token);
         setSuccess(res.data.status);

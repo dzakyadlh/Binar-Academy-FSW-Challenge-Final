@@ -15,6 +15,7 @@ import About from "./pages/About";
 import Support from "./pages/SupportPage";
 import NotFound from "./pages/404";
 import PrivateRoute from "./components/privateRoute";
+import Profile from "./pages/Profile";
 
 import "./App.css";
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="gamelist" element={<GameList />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="profile" element={<Profile />} />
           <Route
             path="home"
             element={
