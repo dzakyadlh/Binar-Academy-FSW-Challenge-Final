@@ -13,6 +13,7 @@ import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
 import About from "./pages/About";
 import PrivateRoute from "./components/privateRoute";
+import Profile from "./pages/Profile";
 
 import "./App.css";
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="gamelist" element={<GameList />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="profile" element={<Profile />} />
           <Route
             path="home"
             element={
