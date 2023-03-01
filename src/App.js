@@ -12,6 +12,8 @@ import GameDetailsValo from "./pages/GameDetails/valo";
 import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
 import About from "./pages/About";
+import Support from "./pages/SupportPage";
+import NotFound from "./pages/404";
 import PrivateRoute from "./components/privateRoute";
 
 import "./App.css";
@@ -70,6 +72,8 @@ const App = () => {
             }
           />
           <Route path="about" element={<About />} />
+          <Route path="support" element={<Support />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
