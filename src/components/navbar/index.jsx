@@ -26,7 +26,7 @@ function Navbar() {
       <nav>
         <Link to="/about">Our Story</Link>
         <Link to="/gamelist">Games</Link>
-        <a href="#">Support</a>
+        <Link to="/support">Support</Link>
         {auth ? (
           <>
             <a href="/profile">Profile</a>
