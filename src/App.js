@@ -20,7 +20,7 @@ import Profile from "./pages/Profile";
 import "./App.css";
 
 import { useNavigate } from "react-router";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
 const App = () => {
@@ -39,7 +39,8 @@ const App = () => {
   return (
     <React.Fragment>
       <div className="container">
-        <Navbar />
+        {window.location.pathname !== "/login" &&
+          window.location.pathname !== "/404" && <Navbar />}
         <Routes>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
@@ -75,9 +76,11 @@ const App = () => {
           />
           <Route path="about" element={<About />} />
           <Route path="support" element={<Support />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
-        <Footer />
+        {window.location.pathname !== "/login" &&
+          window.location.pathname !== "/404" && <Footer />}
       </div>
     </React.Fragment>
   );
