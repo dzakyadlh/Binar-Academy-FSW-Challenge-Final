@@ -8,21 +8,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import imgRPS from "../../assets/RPS.png";
-import imgNBA from "../../assets/NBA2K23.jpg";
 import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { getGames, data } from "./reducer";
 
 import "./style.css";
-import { Container } from "react-bootstrap";
 
 const GameList = () => {
-  const [gamelist, setGamelist] = useState([]);
+  const games = useSelector(data);
+  const dispatch = useDispatch();
 
   const handleFetch = () => {
-    axios.get("http://localhost:5000/gamelist").then((res) => {
-      setGamelist(res);
-      console.log(res.data.result);
-    });
+    dispatch(getGames());
   };
 
   useEffect(() => {
@@ -38,7 +35,7 @@ const GameList = () => {
   return (
     <div className="container-game-list">
       <Typography variant="h3">Game List</Typography>
-      {gamelist?.data?.result?.map((row, index) => (
+      {games?.data?.result?.map((row, index) => (
         <Card
           key={index}
           sx={{ display: "flex", width: 1, minHeight: "400px" }}
@@ -78,7 +75,7 @@ const GameList = () => {
                   marginLeft: "20px",
                 }}
               >
-                PLAY GAME
+                <a href="/rps">PLAY GAME</a>
               </Button>
             </CardActions>
           </Box>

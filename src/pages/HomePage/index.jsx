@@ -1,5 +1,8 @@
-import { useState } from "react";
 import * as React from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getGames, data } from "./reducer";
+import { useNavigate } from "react-router";
 import {
   Card,
   Box,
@@ -11,17 +14,30 @@ import {
   Grid,
 } from "@mui/material";
 import imgBp from "../../assets/Home_Page_Big_Picture.jpg";
-import imgRps from "../../assets/RPS.png";
-import imgNba from "../../assets/NBA2K23.jpg";
-import imgVal from "../../assets/VALORANT.jpg";
 import "./home.css";
-import { Container } from "react-bootstrap";
 
 const HomePage = () => {
   const user = localStorage.getItem("username");
+  const games = useSelector(data);
+  const dispatch = useDispatch();
+
+  const handleFetch = () => {
+    dispatch(getGames());
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
     <React.Fragment>
-      <div className="container-home">
+      <div className="container-lp">
         <Card
           sx={{
             display: "flex",
@@ -51,6 +67,7 @@ const HomePage = () => {
                   color: "white",
                   marginLeft: "10px",
                 }}
+                onClick={() => handleClick("/about")}
               >
                 about us
               </Button>
@@ -71,88 +88,40 @@ const HomePage = () => {
           ></CardMedia>
         </Card>
       </div>
-      <div className="container-home-2">
+      <div className="container-lp-2">
         <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <Card sx={{ width: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
+          {games?.data?.result?.map((row, index) => (
+            <Grid key={index} item xs={4}>
+              <Card sx={{ width: "100%" }}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                    }}
+                    component="div"
+                  >
+                    {row.name}
+                  </Typography>
+                </CardContent>
+                <CardMedia
+                  component="img"
+                  alt=""
+                  height="100%"
+                  image={row.image}
                   style={{
-                    fontWeight: "bold",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
+                    padding: "20px 20px",
+                    borderRadius: "25px",
+                    height: "300px",
                   }}
-                  component="div"
-                >
-                  Rock, Paper & Scissors
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgRps}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  style={{ fontWeight: "bold" }}
-                  component="div"
-                >
-                  NBA 2K23
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgNba}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: "100%" }}>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  style={{ fontWeight: "bold" }}
-                  component="div"
-                >
-                  VALORANT
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                alt=""
-                height="100%"
-                image={imgVal}
-                style={{
-                  padding: "20px 20px",
-                  borderRadius: "25px",
-                  height: "300px",
-                }}
-              />
-            </Card>
-          </Grid>
+                />
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </div>
     </React.Fragment>
