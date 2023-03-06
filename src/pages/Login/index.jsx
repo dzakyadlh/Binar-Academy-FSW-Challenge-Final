@@ -10,44 +10,22 @@ import { useNavigate } from "react-router";
 import "./login.css";
 import LogoImg from "../../assets/LOGO1.png";
 import LoginImg from "../../assets/login.png";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { loginPost, data } from "./reducer";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
   const Navigate = useNavigate();
-
-  const token = localStorage.getItem("token");
-
-  const url = window.location.pathname;
-  // console.log(token);
+  const dispatch = useDispatch();
+  const login = useSelector(data);
+  const loginErr = useSelector((state) => state.login.error);
 
   const handleLogin = () => {
     const payload = { user, password };
-    axios
-      .post("http://localhost:5000/auth/login", payload)
-      .then((res) => {
-        localStorage.setItem("id", res.data.data.id);
-        localStorage.setItem("username", res.data.data.username);
-        localStorage.setItem("email", res.data.data.email);
-        localStorage.setItem("token", res.data.data.token);
-        console.log(res.data.data.token);
-        setSuccess(res.data.status);
-
-        setTimeout(() => {
-          setSuccess("");
-          Navigate("/home");
-        }, 2000);
-      })
-
-      .catch((err) => {
-        setError(err.response.data.msg);
-        setTimeout(() => {
-          setError("");
-        }, 2000);
-      });
+    dispatch(loginPost(payload))
+      .unwrap()
+      .then(() => Navigate("/home"));
   };
 
   const handleKeypress = (e) => {
@@ -109,14 +87,9 @@ const Login = () => {
             <a href="http://localhost:3000/register">register here</a>
           </span>
         </div>
-        {success && (
-          <Alert style={{ marginTop: "10px" }} severity="success">
-            {success}
-          </Alert>
-        )}
-        {error && (
+        {login.status === "error" && loginErr && (
           <Alert style={{ marginTop: "10px" }} severity="error">
-            {error}
+            {loginErr}
           </Alert>
         )}
       </CardContent>

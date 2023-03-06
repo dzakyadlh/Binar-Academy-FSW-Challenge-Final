@@ -8,19 +8,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import imgRPS from "../../assets/RPS.png";
-import imgNBA from "../../assets/NBA2K23.jpg";
+import { useSelector, useDispatch } from "react-redux";
+import { getGames, data } from "./reducer";
 
 import "./style.css";
-import { Container } from "react-bootstrap";
 
 const GameDetail = () => {
-  const [gamelist, setGamelist] = useState([]);
+  const gameDetail = useSelector(data);
+  const dispatch = useDispatch();
 
   const handleFetch = () => {
-    axios.get("http://localhost:5000/gamelist").then((res) => {
-      setGamelist(res);
-    });
+    dispatch(getGames());
   };
 
   useEffect(() => {
@@ -39,7 +37,7 @@ const GameDetail = () => {
               sx={{ width: 1, ml: 1 }}
               style={{ fontWeight: "bold" }}
             >
-              {gamelist?.data?.result[1].name}
+              {gameDetail?.data?.result[1].name}
             </Typography>
             <Typography
               gutterBottom
@@ -47,7 +45,7 @@ const GameDetail = () => {
               component="div"
               sx={{ width: 0.9, ml: 1 }}
             >
-              {gamelist?.data?.result[1].game_detail.detail}
+              {gameDetail?.data?.result[1].game_detail.detail}
             </Typography>
           </CardContent>
           <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
@@ -61,7 +59,7 @@ const GameDetail = () => {
               }}
               sx={{ ml: 1 }}
             >
-              <a href="/rps">PLAY GAME</a>
+              PLAY GAME
             </Button>
           </CardActions>
         </Box>
@@ -72,7 +70,7 @@ const GameDetail = () => {
             height: "inherit",
             width: "inherit",
           }}
-          image={gamelist?.data?.result[1].image}
+          image={gameDetail?.data?.result[1].image}
           title="game image"
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
         />

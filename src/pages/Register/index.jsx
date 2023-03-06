@@ -4,7 +4,8 @@ import { useNavigate } from "react-router";
 import "./register.css";
 import LogoImg from "../../assets/LOGO1.png";
 import RegisImg from "../../assets/register.png";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { registerPost, data } from "./reducer";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,28 +14,15 @@ const Register = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const register = useSelector(data);
+  const registerErr = useSelector((state) => state.register.error);
 
   const handleRegister = () => {
     const payload = { username, email, password };
-    axios
-      .post("http://localhost:5000/auth/register", payload)
-      .then((res) => {
-        setSuccess(res.data.status);
-
-        setTimeout(() => {
-          setSuccess("");
-          Navigate("/login");
-        }, 2000);
-
-        setTimeout(() => {});
-      })
-
-      .catch((err) => {
-        setError(err.response.data.msg);
-        setTimeout(() => {
-          setError("");
-        }, 2000);
-      });
+    dispatch(registerPost(payload))
+      .unwrap()
+      .then(() => Navigate("/login"));
   };
 
   const handleKeypress = (e) => {
@@ -106,14 +94,9 @@ const Register = () => {
             <a href="http://localhost:3000/login">log in</a>
           </span>
         </div>
-        {success && (
-          <Alert style={{ marginTop: "10px" }} severity="success">
-            {success}
-          </Alert>
-        )}
-        {error && (
-          <Alert severity="error" style={{ marginTop: "10px" }}>
-            {error}
+        {register.status === "error" && registerErr && (
+          <Alert style={{ marginTop: "10px" }} severity="error">
+            {registerErr}
           </Alert>
         )}
       </CardContent>

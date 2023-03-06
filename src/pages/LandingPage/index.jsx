@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { getGames, data } from "./reducer";
+import { useNavigate } from "react-router";
 import {
   Card,
   Box,
@@ -12,25 +14,25 @@ import {
   Grid,
 } from "@mui/material";
 import imgBp from "../../assets/Home_Page_Big_Picture.jpg";
-import imgRps from "../../assets/RPS.png";
-import imgNba from "../../assets/NBA2K23.jpg";
-import imgVal from "../../assets/VALORANT.jpg";
 import "./landing.css";
-import { Container } from "react-bootstrap";
 
 const LandingPage = () => {
-  const [gamelist, setGamelist] = useState([]);
+  const games = useSelector(data);
+  const dispatch = useDispatch();
 
   const handleFetch = () => {
-    axios.get("http://localhost:5000/gamelist").then((res) => {
-      setGamelist(res);
-      console.log(res.data.result);
-    });
+    dispatch(getGames());
   };
 
   useEffect(() => {
     handleFetch();
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
 
   return (
     <React.Fragment>
@@ -67,6 +69,7 @@ const LandingPage = () => {
                   color: "white",
                   marginLeft: "10px",
                 }}
+                onClick={() => handleClick("/about")}
               >
                 about us
               </Button>
@@ -89,7 +92,7 @@ const LandingPage = () => {
       </div>
       <div className="container-lp-2">
         <Grid container spacing={3}>
-          {gamelist?.data?.result?.map((row, index) => (
+          {games?.data?.result?.map((row, index) => (
             <Grid key={index} item xs={4}>
               <Card sx={{ width: "100%" }}>
                 <CardContent>
