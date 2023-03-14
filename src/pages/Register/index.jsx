@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, TextField, Alert } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./register.css";
 import LogoImg from "../../assets/LOGO1.png";
@@ -17,19 +17,41 @@ const Register = () => {
   const dispatch = useDispatch();
   const register = useSelector(data);
   const registerErr = useSelector((state) => state.register.error);
+  const registerSucc = useSelector((state) => state.register.success);
 
   const handleRegister = () => {
     const payload = { username, email, password };
     dispatch(registerPost(payload))
       .unwrap()
-      .then(() => Navigate("/login"));
+      .then(() => {
+        setTimeout(() => {
+          Navigate("/login");
+        }, 1000);
+      })
+      .catch((err) => {});
   };
+
+  useEffect(() => {
+    setError(registerErr);
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  }, [registerErr]);
+
+  useEffect(() => {
+    setSuccess(registerSucc);
+    setTimeout(() => {
+      setSuccess("");
+    }, 3000);
+  }, [registerSucc]);
 
   const handleKeypress = (e) => {
     if (e.keyCode === 13) {
       handleRegister();
     }
   };
+
+  console.log(register);
 
   return (
     <div className="app-container">
@@ -94,9 +116,14 @@ const Register = () => {
             <a href="http://localhost:3000/login">log in</a>
           </span>
         </div>
-        {register.status === "error" && registerErr && (
+        {success && (
+          <Alert style={{ marginTop: "10px" }} severity="success">
+            {success}
+          </Alert>
+        )}
+        {error && (
           <Alert style={{ marginTop: "10px" }} severity="error">
-            {registerErr}
+            {error}
           </Alert>
         )}
       </CardContent>

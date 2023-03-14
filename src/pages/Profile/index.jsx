@@ -9,10 +9,11 @@ import { useState, useEffect, Redirect } from "react";
 import { useNavigate } from "react-router";
 import LogoImg from "../../assets/LOGO1.png";
 import ProfileImg from "../../assets/profile1.png";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import * as React from "react";
 import "./profile.css";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfile, deleteProfile, data } from "./reducer";
 
 const Profile = () => {
   const username = localStorage.getItem("username");
@@ -25,68 +26,74 @@ const Profile = () => {
   const [error, setError] = useState("");
   const [editMode, setEditMode] = useState(false);
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const profile = useSelector(data);
+  const profileErr = useSelector((state) => state.profile.error);
+  const profileSucc = useSelector((state) => state.profile.success);
 
   const token = localStorage.getItem("token");
 
-  const url = window.location.pathname;
-
   const handleUpdateProfile = () => {
     const payload = { NewUsername, NewEmail, OldPassword, NewPassword };
-    axios
-      .put(`http://localhost:5000/user/updateacc`, payload, {
-        headers: { Authorization: `${token}` },
-      })
+    dispatch(updateProfile(payload))
+      .unwrap()
       .then((res) => {
-        localStorage.setItem("username", JSON.stringify(NewUsername));
-        localStorage.setItem("email", JSON.stringify(NewEmail));
-        setNewUsername(res.data.NewUsername);
-        setNewEmail(res.data.NewEmail);
-        setOldPassword(res.data.OldPassword);
-        setNewPassword(res.data.NewPassword);
-        setSuccess(res.data.message);
+        localStorage.setItem("username", NewUsername);
+        localStorage.setItem("email", NewEmail);
         setEditMode(false);
+        // setSuccess(profileSucc);
 
-        setTimeout(() => {
-          setSuccess("");
-        }, 2000);
+        // setTimeout(() => {
+        //   setSuccess("");
+        // }, 2000);
       })
       .catch((err) => {
-        setError(err.response.data.message);
-        setError(err.response.data.msg);
-        setTimeout(() => {
-          setError("");
-        }, 2000);
+        //   // setError(profileErr);
+        //   setError(profileErr);
+        //   setTimeout(() => {
+        //     setError("");
+        //   }, 2000);
       });
   };
+
+  useEffect(() => {
+    setError(profileErr);
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  }, [profileErr]);
+
+  useEffect(() => {
+    setSuccess(profileSucc);
+    setTimeout(() => {
+      setSuccess("");
+    }, 3000);
+  }, [profileSucc]);
 
   const handleEditProfile = () => {
     setEditMode(true);
   };
 
   const handleDeleteProfile = () => {
-    axios
-      .delete(`http://localhost:5000/user/deleteacc`, {
-        headers: { Authorization: `${token}` },
-      })
+    dispatch(deleteProfile())
+      .unwrap()
       .then((res) => {
-        setSuccess(res.data.message);
         localStorage.clear();
+        // setSuccess(profileSucc);
 
-        console.log(setSuccess);
-
-        setTimeout(() => {
-          setSuccess("");
-        }, 2000);
+        // setTimeout(() => {
+        //   setSuccess("");
+        // }, 2000);
         setTimeout(() => {
           Navigate("/login");
         }, 2000);
       })
       .catch((err) => {
-        setError(err.response.data.msg);
-
-        setTimeout(() => {
-          setError("");
-        }, 2000);
+        //   // setError(profileErr);
+        //   setError(profileErr);
+        //   setTimeout(() => {
+        //     setError("");
+        //   }, 2000);
       });
   };
 
@@ -118,7 +125,6 @@ const Profile = () => {
               />
               <TextField
                 style={{ marginTop: "15px" }}
-                // type="password"
                 variant="standard"
                 fullWidth
                 value={NewEmail}

@@ -16,6 +16,8 @@ import { loginPost, data } from "./reducer";
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector(data);
@@ -25,8 +27,20 @@ const Login = () => {
     const payload = { user, password };
     dispatch(loginPost(payload))
       .unwrap()
-      .then(() => Navigate("/home"));
+      .then(() => {
+        setTimeout(() => {
+          Navigate("/home");
+        }, 1000);
+      })
+      .catch((err) => {});
   };
+
+  useEffect(() => {
+    setError(loginErr);
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  }, [loginErr]);
 
   const handleKeypress = (e) => {
     if (e.keyCode === 13) {
@@ -87,9 +101,14 @@ const Login = () => {
             <a href="http://localhost:3000/register">register here</a>
           </span>
         </div>
-        {login.status === "error" && loginErr && (
+        {success && (
+          <Alert style={{ marginTop: "10px" }} severity="success">
+            {success}
+          </Alert>
+        )}
+        {error && (
           <Alert style={{ marginTop: "10px" }} severity="error">
-            {loginErr}
+            {error}
           </Alert>
         )}
       </CardContent>

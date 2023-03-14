@@ -39,6 +39,7 @@ export const registerSlice = createSlice({
       .addCase(registerPost.fulfilled, (state, action) => {
         state.status = "success";
         state.data = action.payload;
+        state.success = action.payload.status;
       });
   },
 });
