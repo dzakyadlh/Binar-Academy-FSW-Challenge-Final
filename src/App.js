@@ -6,9 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/navbar";
 import Footer from "./components/Footer";
-import GameDetailsRPS from "./pages/GameDetails/rps";
-import GameDetailsNBA from "./pages/GameDetails/nba";
-import GameDetailsValo from "./pages/GameDetails/valo";
+import GameDetails from "./pages/GameDetails";
 import Game from "./components/RPS/game";
 import Play from "./components/RPS/play";
 import About from "./pages/About";
@@ -21,7 +19,6 @@ import "./App.css";
 
 import { useNavigate } from "react-router";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { Nav } from "react-bootstrap";
 
 const App = () => {
   const [myChoice, setMyChoice] = useState("");
@@ -32,8 +29,8 @@ const App = () => {
   const pathname = window.location.pathname;
 
   useEffect(() => {
-    if (token && pathname == "/login") navigate("/home");
-    if (token && pathname == "/") navigate("/home");
+    if (token && pathname === "/login") navigate("/home");
+    if (token && pathname === "/") navigate("/home");
   }, [pathname]);
 
   return (
@@ -55,9 +52,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path="gamedetails/1" element={<GameDetailsRPS />} />
-          <Route path="gamedetails/2" element={<GameDetailsNBA />} />
-          <Route path="gamedetails/3" element={<GameDetailsValo />} />
+          <Route path="gamedetails/:id" element={<GameDetails />} />
           <Route
             path="/rps"
             element={

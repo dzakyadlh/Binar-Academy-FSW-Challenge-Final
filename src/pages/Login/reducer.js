@@ -31,6 +31,7 @@ export const loginSlice = createSlice({
     builder
       .addCase(loginPost.pending, (state) => {
         state.status = "loading";
+        state.error = "";
       })
       .addCase(loginPost.rejected, (state, action) => {
         state.status = "error";
@@ -48,8 +49,6 @@ export const loginSlice = createSlice({
       });
   },
 });
-
-export const {} = loginSlice.actions;
 
 export const data = (state) => state.login;
 

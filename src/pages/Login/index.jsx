@@ -1,26 +1,18 @@
-import {
-  TextField,
-  Button,
-  CardContent,
-  Alert,
-  makeStyles,
-} from "@mui/material";
-import { useState, useEffect, Redirect } from "react";
+import { TextField, Button, CardContent, Alert } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
 import LogoImg from "../../assets/LOGO1.png";
 import LoginImg from "../../assets/login.png";
 import { useSelector, useDispatch } from "react-redux";
-import { loginPost, data } from "./reducer";
+import { loginPost } from "./reducer";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const Navigate = useNavigate();
   const dispatch = useDispatch();
-  const login = useSelector(data);
   const loginErr = useSelector((state) => state.login.error);
 
   const handleLogin = () => {
@@ -28,11 +20,8 @@ const Login = () => {
     dispatch(loginPost(payload))
       .unwrap()
       .then(() => {
-        setTimeout(() => {
-          Navigate("/home");
-        }, 1000);
-      })
-      .catch((err) => {});
+        Navigate("/home");
+      });
   };
 
   useEffect(() => {
@@ -97,15 +86,10 @@ const Login = () => {
         </Button>
         <div className="signin">
           <span>
-            doesn't have an account?{" "}
+            doesn&apos;t have an account?{" "}
             <a href="http://localhost:3000/register">register here</a>
           </span>
         </div>
-        {success && (
-          <Alert style={{ marginTop: "10px" }} severity="success">
-            {success}
-          </Alert>
-        )}
         {error && (
           <Alert style={{ marginTop: "10px" }} severity="error">
             {error}
