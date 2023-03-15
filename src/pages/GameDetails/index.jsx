@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSelector, useDispatch } from "react-redux";
-import { getGames, data } from "./reducer";
+import { getGameDetails, data } from "./reducer";
 
 import "./style.css";
 
@@ -18,7 +18,7 @@ const GameDetail = () => {
   const dispatch = useDispatch();
 
   const handleFetch = () => {
-    dispatch(getGames());
+    dispatch(getGameDetails());
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const GameDetail = () => {
               sx={{ width: 1, ml: 1 }}
               style={{ fontWeight: "bold" }}
             >
-              {gameDetail?.data?.result[1].name}
+              {gameDetail?.data?.result[0].name}
             </Typography>
             <Typography
               gutterBottom
@@ -45,7 +45,7 @@ const GameDetail = () => {
               component="div"
               sx={{ width: 0.9, ml: 1 }}
             >
-              {gameDetail?.data?.result[1].game_detail.detail}
+              {gameDetail?.data?.result[0].game_detail.detail}
             </Typography>
           </CardContent>
           <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
@@ -59,7 +59,7 @@ const GameDetail = () => {
               }}
               sx={{ ml: 1 }}
             >
-              PLAY GAME
+              <a href="/rps">PLAY GAME</a>
             </Button>
           </CardActions>
         </Box>
@@ -70,7 +70,7 @@ const GameDetail = () => {
             height: "inherit",
             width: "inherit",
           }}
-          image={gameDetail?.data?.result[1].image}
+          image={gameDetail?.data?.result[0].image}
           title="game image"
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
         />

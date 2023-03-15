@@ -32,8 +32,6 @@ export const getGamesSlice = createSlice({
   },
 });
 
-export const {} = getGamesSlice.actions;
-
 export const data = (state) => state.games;
 
 export default getGamesSlice.reducer;

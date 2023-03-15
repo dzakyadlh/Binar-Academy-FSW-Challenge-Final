@@ -7,7 +7,7 @@ import axios from "axios";
 //   );
 // }
 
-export const getGamesAPI = async (payload) => {
-  const res = await axios.get("http://localhost:5000/gamelist");
+export const getGamesAPI = async () => {
+  const res = await axios.get("http://localhost:5000/games");
   return res;
 };
