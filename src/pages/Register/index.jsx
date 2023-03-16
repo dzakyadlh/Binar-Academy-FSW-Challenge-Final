@@ -26,7 +26,7 @@ const Register = () => {
       .then(() => {
         setTimeout(() => {
           Navigate("/login");
-        }, 1000);
+        }, 2000);
       })
       .catch((err) => {});
   };

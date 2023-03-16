@@ -31,6 +31,8 @@ export const registerSlice = createSlice({
     builder
       .addCase(registerPost.pending, (state) => {
         state.status = "loading";
+        state.error = "";
+        state.success = "";
       })
       .addCase(registerPost.rejected, (state, action) => {
         state.status = "error";
