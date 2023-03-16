@@ -41,6 +41,8 @@ export const profileSlice = createSlice({
     builder
       .addCase(updateProfile.pending, (state) => {
         state.status = "loading";
+        state.error = "";
+        state.success = "";
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.status = "error";
@@ -53,6 +55,8 @@ export const profileSlice = createSlice({
       })
       .addCase(deleteProfile.pending, (state) => {
         state.status = "loading";
+        state.error = "";
+        state.success = "";
       })
       .addCase(deleteProfile.rejected, (state, action) => {
         state.status = "error";
