@@ -10,21 +10,23 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { getGameDetails, data } from "./reducer";
+import {useParams} from 'react-router-dom'
 
 import "./style.css";
 
 const GameDetail = () => {
   const gameDetail = useSelector(data);
   const dispatch = useDispatch();
+  let { id } = useParams();
 
   const handleFetch = () => {
-    dispatch(getGameDetails());
+    dispatch(getGameDetails(id));
   };
 
   useEffect(() => {
     handleFetch();
   }, []);
-
+  
   return (
     <div className="container-gd">
       <Card sx={{ display: "flex", width: 1, height: "450px" }}>
@@ -37,7 +39,7 @@ const GameDetail = () => {
               sx={{ width: 1, ml: 1 }}
               style={{ fontWeight: "bold" }}
             >
-              {gameDetail?.data?.result[0].name}
+              {gameDetail?.data?.name}
             </Typography>
             <Typography
               gutterBottom
@@ -45,7 +47,7 @@ const GameDetail = () => {
               component="div"
               sx={{ width: 0.9, ml: 1 }}
             >
-              {gameDetail?.data?.result[0].game_detail.detail}
+              {gameDetail?.data?.detail}
             </Typography>
           </CardContent>
           <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
@@ -70,7 +72,7 @@ const GameDetail = () => {
             height: "inherit",
             width: "inherit",
           }}
-          image={gameDetail?.data?.result[0].image}
+          image={gameDetail?.data?.image}
           title="game image"
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
         />
