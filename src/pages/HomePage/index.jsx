@@ -35,6 +35,8 @@ const HomePage = () => {
     navigate(link);
   };
 
+  console.log(games);
+
   return (
     <React.Fragment>
       <div className="container-lp">

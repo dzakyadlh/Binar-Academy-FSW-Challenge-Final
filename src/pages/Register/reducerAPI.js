@@ -8,7 +8,10 @@ import axios from "axios";
 // }
 
 export const registerAPI = async (payload) => {
-  const res = await axios.post("http://localhost:5000/auth/register", payload);
+  const res = await axios.post(
+    `${process.env.REACT_APP_BE_URL}auth/register`,
+    payload
+  );
 
   return res;
 };

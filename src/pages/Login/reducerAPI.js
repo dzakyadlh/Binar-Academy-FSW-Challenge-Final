@@ -8,7 +8,10 @@ import axios from "axios";
 // }
 
 export const loginAPI = async (payload) => {
-  const res = await axios.post("http://localhost:5000/auth/login", payload);
+  const res = await axios.post(
+    `${process.env.REACT_APP_BE_URL}auth/login`,
+    payload
+  );
 
   return res;
 };

@@ -8,6 +8,8 @@ import axios from "axios";
 // }
 
 export const getGameDetailsAPI = async (id) => {
-  const res = await axios.get(`http://localhost:5000/games/detail/${id}`);
+  const res = await axios.get(
+    `${process.env.REACT_APP_BE_URL}games/detail/${id}`
+  );
   return res;
 };
