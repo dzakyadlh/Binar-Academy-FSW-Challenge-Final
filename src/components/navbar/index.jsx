@@ -6,13 +6,11 @@ import React, { useState, useEffect } from "react";
 
 function Navbar() {
   const auth = localStorage.getItem("token");
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
     navigate("/login");
   };
-
-  const navigate = useNavigate();
-
   const handleClick = (link) => {
     navigate(link);
   };
