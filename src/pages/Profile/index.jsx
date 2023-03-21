@@ -25,6 +25,7 @@ const Profile = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [deleteMode, setDelMode] = useState(false);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const profile = useSelector(data);
@@ -41,8 +42,9 @@ const Profile = () => {
         localStorage.setItem("username", NewUsername);
         localStorage.setItem("email", NewEmail);
         setEditMode(false);
+        setOldPassword("");
+        setNewPassword("");
         // setSuccess(profileSucc);
-
         // setTimeout(() => {
         //   setSuccess("");
         // }, 2000);
@@ -71,19 +73,28 @@ const Profile = () => {
   }, [profileSucc]);
 
   const handleEditProfile = () => {
+    setNewUsername(username)
+    setNewEmail(email)
     setEditMode(true);
   };
+
+  const handleCancelEdit = () => {
+    setEditMode(false);
+  }
+
+  const handleCancelDel = () => {
+    setDelMode(false);
+  }
+
+  const handleDelete = () => {
+    setDelMode(true);
+  }
 
   const handleDeleteProfile = () => {
     dispatch(deleteProfile())
       .unwrap()
       .then((res) => {
         localStorage.clear();
-        // setSuccess(profileSucc);
-
-        // setTimeout(() => {
-        //   setSuccess("");
-        // }, 2000);
         setTimeout(() => {
           Navigate("/login");
         }, 2000);
@@ -115,24 +126,24 @@ const Profile = () => {
               </div>
               <h1>Profile</h1>
 
-              <TextField
-                style={{ marginTop: "15px" }}
-                variant="standard"
-                fullWidth
-                value={NewUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-                disabled={!editMode}
-              />
-              <TextField
-                style={{ marginTop: "15px" }}
-                variant="standard"
-                fullWidth
-                value={NewEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                disabled={!editMode}
-              />
               {editMode ? (
-                <div>
+                  <div>
+                    <TextField
+                    style={{ marginTop: "15px" }}
+                    variant="standard"
+                    fullWidth
+                    value={NewUsername}
+                    onChange={(e) => setNewUsername(e.target.value)}
+                    disabled={!editMode}
+                  />
+                  <TextField
+                    style={{ marginTop: "15px" }}
+                    variant="standard"
+                    fullWidth
+                    value={NewEmail}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                    disabled={!editMode}
+                  />
                   <TextField
                     style={{ marginTop: "15px" }}
                     label="OldPassword"
@@ -168,29 +179,87 @@ const Profile = () => {
                   <Button
                     style={{
                       color: "white",
+                      backgroundColor: "black",
+                      borderRadius: "15px",
+                      marginTop: "30px",
+                      width: "400px",
+                    }}
+                    onClick={handleCancelEdit}
+                  >
+                    Cancel Edit
+                  </Button>
+                  {deleteMode ? (
+                  <div>
+                    <p className="r-u-sure">Are you sure want to delete this profile?</p>
+                    <Button
+                      style={{
+                        color: "white",
+                        backgroundColor: "black",
+                        borderRadius: "15px",
+                        marginTop: "30px",
+                        width: "400px",
+                      }}
+                      onClick={handleCancelDel}
+                    >
+                      No, cancel it
+                    </Button>
+                    <Button
+                      style={{
+                        color: "white",
+                        backgroundColor: "#FF6584",
+                        borderRadius: "15px",
+                        marginTop: "30px",
+                        width: "400px",
+                      }}
+                      onClick={handleDeleteProfile}
+                    >
+                      Yes, Delete Account
+                    </Button>
+                  </div>
+                  ) : (
+                  <Button
+                    style={{
+                      color: "white",
                       backgroundColor: "#FF6584",
                       borderRadius: "15px",
                       marginTop: "30px",
                       width: "400px",
                     }}
-                    onClick={handleDeleteProfile}
+                    onClick={handleDelete}
                   >
                     Delete Account
                   </Button>
+                  )}
                 </div>
               ) : (
-                <Button
-                  style={{
-                    color: "white",
-                    backgroundColor: "black",
-                    borderRadius: "15px",
-                    marginTop: "30px",
-                    width: "400px",
-                  }}
-                  onClick={handleEditProfile}
-                >
-                  Update Profile
-                </Button>
+                <div>
+                  <TextField
+                    style={{ marginTop: "15px" }}
+                    variant="standard"
+                    fullWidth
+                    value={username}
+                    disabled={!editMode}
+                  />
+                  <TextField
+                    style={{ marginTop: "15px" }}
+                    variant="standard"
+                    fullWidth
+                    value={email}
+                    disabled={!editMode}
+                  />
+                  <Button
+                    style={{
+                      color: "white",
+                      backgroundColor: "black",
+                      borderRadius: "15px",
+                      marginTop: "30px",
+                      width: "400px",
+                    }}
+                    onClick={handleEditProfile}
+                  >
+                    Update Profile
+                  </Button>
+                </div>
               )}
               {success && (
                 <Alert style={{ marginTop: "10px" }} severity="success">

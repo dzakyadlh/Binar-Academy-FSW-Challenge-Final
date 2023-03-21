@@ -23,3 +23,11 @@
 .profileimg {
   width: 45vw;
 }
+
+.r-u-sure {
+  margin-bottom: -9px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  width: 400px;
+}

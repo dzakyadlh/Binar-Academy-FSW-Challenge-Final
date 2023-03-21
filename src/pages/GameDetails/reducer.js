@@ -10,10 +10,9 @@ const initialState = {
   status: "idle",
 };
 
-export const getGameDetails = createAsyncThunk("getGames/data", async () => {
-  const response = await getGameDetailsAPI();
-
-  return response.data;
+export const getGameDetails = createAsyncThunk("getGames/result", async (id) => {
+  const response = await getGameDetailsAPI(id);
+  return response.data.result;
 });
 
 export const getGameDetailsSlice = createSlice({
@@ -32,6 +31,6 @@ export const getGameDetailsSlice = createSlice({
   },
 });
 
-export const data = (state) => state.games;
+export const data = (state) => state.gameDetails;
 
 export default getGameDetailsSlice.reducer;
