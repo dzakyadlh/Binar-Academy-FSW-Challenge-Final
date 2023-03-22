@@ -21,7 +21,7 @@ const Login = () => {
     dispatch(loginPost(payload))
       .unwrap()
       .then(() => {
-        Navigate("/home");
+        navigate("/home");
       });
   };
 

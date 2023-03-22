@@ -6,6 +6,7 @@ import imgLogo from "../../assets/LOGO1.png";
 import RegisImg from "../../assets/register.png";
 import { useSelector, useDispatch } from "react-redux";
 import { registerPost, data } from "./reducer";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -25,7 +26,7 @@ const Register = () => {
       .unwrap()
       .then(() => {
         setTimeout(() => {
-          Navigate("/login");
+          navigate("/login");
         }, 2000);
       })
       .catch((err) => {});
@@ -121,7 +122,7 @@ const Register = () => {
         </Button>
         <div className="signin">
           <span>
-            already have an account? <a href="/login">log in</a>
+            already have an account? <Link to="/login">Log in here</Link>
           </span>
         </div>
         {success && (

@@ -10,7 +10,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { getGameDetails, data } from "./reducer";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -26,7 +27,7 @@ const GameDetail = () => {
   useEffect(() => {
     handleFetch();
   }, []);
-  
+
   return (
     <div className="container-gd">
       <Card sx={{ display: "flex", width: 1, height: "450px" }}>
@@ -61,7 +62,7 @@ const GameDetail = () => {
               }}
               sx={{ ml: 1 }}
             >
-              <a href="/rps">PLAY GAME</a>
+              <Link to="/rps">PLAY GAME</Link>
             </Button>
           </CardActions>
         </Box>
