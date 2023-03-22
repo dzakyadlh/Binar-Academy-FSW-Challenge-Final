@@ -21,6 +21,10 @@
   justify-content: first baseline;
 }
 
+.app-container h1 {
+  font-size: 80px;
+}
+
 /* Responsive Breakpoint */
 
 @media screen and (max-width: 1024px) {

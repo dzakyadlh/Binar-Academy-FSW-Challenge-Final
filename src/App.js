@@ -37,7 +37,8 @@ const App = () => {
     <React.Fragment>
       <div className="container">
         {window.location.pathname !== "/login" &&
-          window.location.pathname !== "/404" && <Navbar />}
+          window.location.pathname !== "/404" &&
+          window.location.pathname !== "/register" && <Navbar />}
         <Routes>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
@@ -75,6 +76,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
         {window.location.pathname !== "/login" &&
+          window.location.pathname !== "/register" &&
           window.location.pathname !== "/404" && <Footer />}
       </div>
     </React.Fragment>

@@ -2,7 +2,7 @@ import { Button, Card, CardContent, TextField, Alert } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./register.css";
-import LogoImg from "../../assets/LOGO1.png";
+import imgLogo from "../../assets/LOGO1.png";
 import RegisImg from "../../assets/register.png";
 import { useSelector, useDispatch } from "react-redux";
 import { registerPost, data } from "./reducer";
@@ -13,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const register = useSelector(data);
   const registerErr = useSelector((state) => state.register.error);
@@ -51,6 +51,10 @@ const Register = () => {
     }
   };
 
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   console.log(register);
 
   return (
@@ -64,7 +68,12 @@ const Register = () => {
         }}
       >
         <div className="logoo">
-          <img src={LogoImg} alt="" width="180px"></img>
+          <img
+            src={imgLogo}
+            width="180px"
+            alt=""
+            onClick={() => handleClick("/")}
+          ></img>
         </div>
         <h1>Create an account</h1>
         <p>Create an account to access all the features</p>
@@ -112,8 +121,7 @@ const Register = () => {
         </Button>
         <div className="signin">
           <span>
-            already have an account?{" "}
-            <a href="http://localhost:3000/login">log in</a>
+            already have an account? <a href="/login">log in</a>
           </span>
         </div>
         {success && (
