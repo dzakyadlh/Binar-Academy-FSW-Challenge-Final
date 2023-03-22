@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGames, data } from "./reducer";
 
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const GameList = () => {
   const games = useSelector(data);
@@ -75,7 +76,7 @@ const GameList = () => {
                   marginLeft: "20px",
                 }}
               >
-                <a href="/rps">PLAY GAME</a>
+                <Link to="/rps">PLAY GAME</Link>
               </Button>
             </CardActions>
           </Box>

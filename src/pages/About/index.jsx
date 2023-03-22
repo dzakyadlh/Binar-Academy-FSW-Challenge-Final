@@ -1,8 +1,15 @@
 import * as React from "react";
 import "./about.css";
 import AboutUs from "../../assets/about_us_1.png";
+import { useNavigate } from "react-router";
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
     <React.Fragment>
       <div className="container">
@@ -27,7 +34,12 @@ const About = () => {
               <li>Muhammad Haiqal</li>
               <li>Salma Khoerunisa</li>
             </ul>
-            <button className="contactus">Contact Us</button>
+            <button
+              className="contactus"
+              onClick={() => handleClick("/support")}
+            >
+              Contact Us
+            </button>
           </div>
           <div className="container-40">
             <img className="aboutus" src={AboutUs} alt="about us" />

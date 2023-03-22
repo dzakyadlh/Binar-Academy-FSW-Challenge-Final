@@ -2,16 +2,17 @@ import { TextField, Button, CardContent, Alert } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
-import LogoImg from "../../assets/LOGO1.png";
+import imgLogo from "../../assets/LOGO1.png";
 import LoginImg from "../../assets/login.png";
 import { useSelector, useDispatch } from "react-redux";
 import { loginPost } from "./reducer";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginErr = useSelector((state) => state.login.error);
 
@@ -20,7 +21,7 @@ const Login = () => {
     dispatch(loginPost(payload))
       .unwrap()
       .then(() => {
-        Navigate("/home");
+        navigate("/home");
       });
   };
 
@@ -37,6 +38,10 @@ const Login = () => {
     }
   };
 
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
     <div className="app-container">
       <CardContent
@@ -48,7 +53,12 @@ const Login = () => {
         }}
       >
         <div className="logoo">
-          <img src={LogoImg} alt="" width="180px"></img>
+          <img
+            src={imgLogo}
+            width="180px"
+            alt=""
+            onClick={() => handleClick("/")}
+          ></img>
         </div>
         <h1>Login</h1>
         <p>Login to access all the features</p>
@@ -87,7 +97,7 @@ const Login = () => {
         <div className="signin">
           <span>
             doesn&apos;t have an account?{" "}
-            <a href="http://localhost:3000/register">register here</a>
+            <Link to="/register">Register Here</Link>
           </span>
         </div>
         {error && (
