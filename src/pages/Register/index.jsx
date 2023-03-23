@@ -6,6 +6,7 @@ import LogoImg from "../../assets/LOGO1.png";
 import RegisImg from "../../assets/register.png";
 import { useSelector, useDispatch } from "react-redux";
 import { registerPost, data } from "./reducer";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -112,7 +113,7 @@ const Register = () => {
         <div className="signin">
           <span>
             already have an account?{" "}
-            <a href="http://localhost:3000/login">log in</a>
+            <Link href="/login">log in</Link>
           </span>
         </div>
         {success && (

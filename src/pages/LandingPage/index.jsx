@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import imgBp from "../../assets/Home_Page_Big_Picture.jpg";
 import "./landing.css";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const games = useSelector(data);
@@ -94,6 +95,7 @@ const LandingPage = () => {
         <Grid container spacing={3}>
           {games?.data?.result?.map((row, index) => (
             <Grid key={index} item xs={4}>
+              <Link to={`/gamedetails/${row.id}`}>
               <Card sx={{ width: "100%" }}>
                 <CardContent>
                   <Typography
@@ -122,6 +124,7 @@ const LandingPage = () => {
                   }}
                 />
               </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>

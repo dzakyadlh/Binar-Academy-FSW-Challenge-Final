@@ -12,13 +12,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGameDetails, data } from "./reducer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import {BigPlayButton, Player} from "video-react"
+import "./video-react.css"
 import "./style.css";
 
 const GameDetail = () => {
   const gameDetail = useSelector(data);
   const dispatch = useDispatch();
   let { id } = useParams();
+  const[player, setPlayer] = useState()
+  const [modal, setModal] = useState(false);
 
   const handleFetch = () => {
     dispatch(getGameDetails(id));
@@ -27,6 +30,16 @@ const GameDetail = () => {
   useEffect(() => {
     handleFetch();
   }, []);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if(modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
 
   return (
     <div className="container-gd">
@@ -51,7 +64,7 @@ const GameDetail = () => {
               {gameDetail?.data?.detail}
             </Typography>
           </CardContent>
-          <CardActions style={{ marginBottom: "20px", marginTop: "30px" }}>
+          <CardActions style={{ marginBottom: "20px", marginTop: "20px" }}>
             <Button
               size="md"
               style={{
@@ -64,6 +77,19 @@ const GameDetail = () => {
             >
               <Link to="/rps">PLAY GAME</Link>
             </Button>
+            <Button 
+              size="md"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "black",
+                color: "white",
+                width: "40%",
+              }}
+              onClick={toggleModal} 
+              sx={{ ml: 1 }}
+            >
+              Play Trailer
+            </Button>
           </CardActions>
         </Box>
         <CardMedia
@@ -74,10 +100,30 @@ const GameDetail = () => {
             width: "inherit",
           }}
           image={gameDetail?.data?.image}
-          title="game image"
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
-        />
+        >      
+        </CardMedia>  
       </Card>
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            <h2>Game Trailer</h2>
+            <Player
+            ref={(player)=> {
+              setPlayer(player)
+            }}
+            poster={gameDetail?.data?.image}
+            src={gameDetail?.data?.video}
+            >
+            <BigPlayButton position="center"/>
+            </Player>
+            <button className="close-modal" onClick={toggleModal}>
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
