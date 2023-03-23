@@ -2,11 +2,10 @@ import { Button, Card, CardContent, TextField, Alert } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./register.css";
-import imgLogo from "../../assets/LOGO1.png";
+import LogoImg from "../../assets/LOGO1.png";
 import RegisImg from "../../assets/register.png";
 import { useSelector, useDispatch } from "react-redux";
 import { registerPost, data } from "./reducer";
-import { Link } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
   const register = useSelector(data);
   const registerErr = useSelector((state) => state.register.error);
@@ -26,7 +25,7 @@ const Register = () => {
       .unwrap()
       .then(() => {
         setTimeout(() => {
-          navigate("/login");
+          Navigate("/login");
         }, 2000);
       })
       .catch((err) => {});
@@ -52,35 +51,24 @@ const Register = () => {
     }
   };
 
-  const handleClick = (link) => {
-    navigate(link);
-  };
-
   console.log(register);
 
   return (
     <div className="app-container">
       <CardContent
-        style={{
+        sx={{
           paddingBottom: "150px",
           fontSize: "20px",
-          width: "400px",
+          width: { xs: 100, sm: 200, md: 300, lg: 400, xl: 500 },
           justifyContent: "center",
         }}
       >
-        <div className="logoo">
-          <img
-            src={imgLogo}
-            width="180px"
-            alt=""
-            onClick={() => handleClick("/")}
-          ></img>
-        </div>
-        <h1>Create an account</h1>
+        <img className="logoo" src={LogoImg} alt=""></img>
+        <h1 className="create">Create an account</h1>
         <p>Create an account to access all the features</p>
 
         <TextField
-          style={{ marginTop: "15px" }}
+          sx={{ marginTop: "15px" }}
           label="Username"
           variant="standard"
           width="20px"
@@ -90,7 +78,7 @@ const Register = () => {
           onKeyUp={handleKeypress}
         />
         <TextField
-          style={{ marginTop: "15px" }}
+          sx={{ marginTop: "15px" }}
           label="Email"
           variant="standard"
           fullWidth
@@ -99,7 +87,7 @@ const Register = () => {
           onKeyUp={handleKeypress}
         />
         <TextField
-          style={{ marginTop: "15px" }}
+          sx={{ marginTop: "15px" }}
           label="Password"
           type="password"
           variant="standard"
@@ -109,12 +97,13 @@ const Register = () => {
           onKeyUp={handleKeypress}
         />
         <Button
-          style={{
+          sx={{
             color: "white",
             backgroundColor: "black",
             borderRadius: "15px",
             marginTop: "30px",
-            width: "400px",
+            width: "100%",
+            maxWidth: "400px",
           }}
           onClick={handleRegister}
         >
@@ -122,16 +111,17 @@ const Register = () => {
         </Button>
         <div className="signin">
           <span>
-            already have an account? <Link to="/login">Log in here</Link>
+            already have an account?{" "}
+            <a href="http://localhost:3000/login">log in</a>
           </span>
         </div>
         {success && (
-          <Alert style={{ marginTop: "10px" }} severity="success">
+          <Alert sx={{ marginTop: "10px" }} severity="success">
             {success}
           </Alert>
         )}
         {error && (
-          <Alert style={{ marginTop: "10px" }} severity="error">
+          <Alert sx={{ marginTop: "10px" }} severity="error">
             {error}
           </Alert>
         )}

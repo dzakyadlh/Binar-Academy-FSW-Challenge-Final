@@ -2,17 +2,16 @@ import { TextField, Button, CardContent, Alert } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
-import imgLogo from "../../assets/LOGO1.png";
+import LogoImg from "../../assets/LOGO1.png";
 import LoginImg from "../../assets/login.png";
 import { useSelector, useDispatch } from "react-redux";
 import { loginPost } from "./reducer";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
   const loginErr = useSelector((state) => state.login.error);
 
@@ -21,7 +20,7 @@ const Login = () => {
     dispatch(loginPost(payload))
       .unwrap()
       .then(() => {
-        navigate("/home");
+        Navigate("/home");
       });
   };
 
@@ -38,32 +37,22 @@ const Login = () => {
     }
   };
 
-  const handleClick = (link) => {
-    navigate(link);
-  };
-
   return (
     <div className="app-container">
       <CardContent
-        style={{
+        sx={{
           paddingBottom: "100px",
           fontSize: "20px",
-          width: "400px",
+          width: { xs: 100, sm: 200, md: 300, lg: 400, xl: 500 },
           justifyContent: "center",
         }}
       >
-        <div className="logoo">
-          <img
-            src={imgLogo}
-            width="180px"
-            alt=""
-            onClick={() => handleClick("/")}
-          ></img>
-        </div>
-        <h1>Login</h1>
+        <img className="logoo" src={LogoImg} alt=""></img>
+        <h1 className="login">Login</h1>
         <p>Login to access all the features</p>
+
         <TextField
-          style={{ marginTop: "15px" }}
+          sx={{ marginTop: "15px" }}
           label="Email / Username"
           variant="standard"
           width="20px"
@@ -73,7 +62,7 @@ const Login = () => {
           onKeyUp={handleKeypress}
         />
         <TextField
-          style={{ marginTop: "15px" }}
+          sx={{ marginTop: "15px" }}
           label="Password"
           type="password"
           variant="standard"
@@ -83,12 +72,13 @@ const Login = () => {
           onKeyUp={handleKeypress}
         />
         <Button
-          style={{
+          sx={{
             color: "white",
             backgroundColor: "black",
             borderRadius: "15px",
             marginTop: "30px",
-            width: "400px",
+            width: "100%",
+            maxWidth: "400px",
           }}
           onClick={handleLogin}
         >
@@ -97,11 +87,11 @@ const Login = () => {
         <div className="signin">
           <span>
             doesn&apos;t have an account?{" "}
-            <Link to="/register">Register Here</Link>
+            <a href="http://localhost:3000/register">register here</a>
           </span>
         </div>
         {error && (
-          <Alert style={{ marginTop: "10px" }} severity="error">
+          <Alert sx={{ marginTop: "10px" }} severity="error">
             {error}
           </Alert>
         )}

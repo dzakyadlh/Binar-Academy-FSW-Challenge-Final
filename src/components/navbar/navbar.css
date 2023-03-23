@@ -47,3 +47,140 @@ button a {
   color: #cfcfcf;
   text-align: center;
 }
+
+@media screen and (max-width: 1070px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10rem;
+  }
+
+  header img {
+    width: 70px;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  button {
+    padding: 10px;
+    width: 90px;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 784px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5rem;
+  }
+
+  header img {
+    width: 60px;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  button {
+    padding: 5px;
+    width: 80px;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 604px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  header img {
+    width: 60px;
+  }
+
+  nav a {
+    margin: 0 0.3rem;
+  }
+
+  button {
+    padding: 5px;
+    width: 80px;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    padding: 0 1rem;
+  }
+
+  header img {
+    width: 60px;
+  }
+
+  nav a {
+    margin: 0 0.2rem;
+  }
+
+  button {
+    padding: 5px;
+    width: 80px;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  header {
+    padding: 0 1rem;
+  }
+
+  header img {
+    width: 50px;
+  }
+
+  nav a {
+    margin: 0 0.2rem;
+    font-size: small;
+  }
+
+  button {
+    padding: 4px;
+    width: 80px;
+    margin-left: 0.5rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  header {
+    padding: 0 1rem;
+  }
+
+  header img {
+    width: 50px;
+  }
+
+  nav a {
+    margin: 0 0.1rem;
+    font-size: smaller;
+  }
+
+  button {
+    padding: 4px;
+    width: 40px;
+    margin-left: 0.5rem;
+    font-size: 0.6rem;
+  }
+}

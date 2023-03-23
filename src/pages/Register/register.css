@@ -1,6 +1,6 @@
 .rightS img {
   padding-left: 100px;
-  width: 110vh;
+  width: 60vw;
 }
 
 .app-container {
@@ -21,4 +21,43 @@
   justify-content: first baseline;
   align-items: center;
   margin-bottom: 40px;
+  width: 140px;
+}
+.create {
+  font-size: 70px;
+}
+@media screen and (max-width: 850px) {
+  .logoo {
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 120px;
+  }
+
+  .create {
+    font-size: 40px;
+  }
+
+  .rightS img {
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .logoo {
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100px;
+  }
+
+  .create {
+    font-size: 30px;
+  }
+
+  .rightS img {
+    padding-left: 30px;
+  }
 }
