@@ -113,7 +113,7 @@ const Register = () => {
         <div className="signin">
           <span>
             already have an account?{" "}
-            <Link href="/login">log in</Link>
+            <Link to="/login">log in</Link>
           </span>
         </div>
         {success && (
