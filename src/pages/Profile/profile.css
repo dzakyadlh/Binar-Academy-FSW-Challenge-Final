@@ -31,3 +31,41 @@
   font-weight: bold;
   width: 400px;
 }
+
+@media screen and (max-width: 850px) {
+  .logoo {
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 120px;
+  }
+  .profile {
+    font-size: 40px;
+  }
+  .profileimg {
+    padding-left: 20px;
+    margin-top: 50px;
+  }
+
+  .container-profile {
+    margin-top: 20vh;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .logoo {
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100px;
+  }
+  .profile {
+    font-size: 30px;
+  }
+  .profileimg {
+    padding-left: 10px;
+    margin-top: 80px;
+  }
+}

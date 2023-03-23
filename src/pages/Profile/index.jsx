@@ -73,22 +73,22 @@ const Profile = () => {
   }, [profileSucc]);
 
   const handleEditProfile = () => {
-    setNewUsername(username)
-    setNewEmail(email)
+    setNewUsername(username);
+    setNewEmail(email);
     setEditMode(true);
   };
 
   const handleCancelEdit = () => {
     setEditMode(false);
-  }
+  };
 
   const handleCancelDel = () => {
     setDelMode(false);
-  }
+  };
 
   const handleDelete = () => {
     setDelMode(true);
-  }
+  };
 
   const handleDeleteProfile = () => {
     dispatch(deleteProfile())
@@ -114,22 +114,20 @@ const Profile = () => {
         <div className="container-profile">
           <div className="container-35">
             <CardContent
-              style={{
+              sx={{
                 paddingBottom: "100px",
                 fontSize: "20px",
-                width: "400px",
+                width: { xs: 150, sm: 250, md: 350, lg: 450, xl: 550 },
                 justifyContent: "center",
               }}
             >
-              <div className="logoo">
-                <img src={LogoImg} alt="" width="180px"></img>
-              </div>
-              <h1>Profile</h1>
+              <img className="logoo" src={LogoImg} alt=""></img>
+              <h1 className="profile">Profile</h1>
 
               {editMode ? (
-                  <div>
-                    <TextField
-                    style={{ marginTop: "15px" }}
+                <div>
+                  <TextField
+                    sx={{ marginTop: "15px" }}
                     variant="standard"
                     fullWidth
                     value={NewUsername}
@@ -137,7 +135,7 @@ const Profile = () => {
                     disabled={!editMode}
                   />
                   <TextField
-                    style={{ marginTop: "15px" }}
+                    sx={{ marginTop: "15px" }}
                     variant="standard"
                     fullWidth
                     value={NewEmail}
@@ -145,7 +143,7 @@ const Profile = () => {
                     disabled={!editMode}
                   />
                   <TextField
-                    style={{ marginTop: "15px" }}
+                    sx={{ marginTop: "15px" }}
                     label="OldPassword"
                     type="password"
                     variant="standard"
@@ -155,7 +153,7 @@ const Profile = () => {
                     disabled={!editMode}
                   />
                   <TextField
-                    style={{ marginTop: "15px" }}
+                    sx={{ marginTop: "15px" }}
                     label="NewPassword"
                     type="password"
                     variant="standard"
@@ -165,95 +163,103 @@ const Profile = () => {
                     disabled={!editMode}
                   />
                   <Button
-                    style={{
+                    sx={{
                       color: "white",
                       backgroundColor: "black",
                       borderRadius: "15px",
                       marginTop: "30px",
-                      width: "400px",
+                      width: "100%",
+                      maxWidth: "400px",
                     }}
                     onClick={handleUpdateProfile}
                   >
                     Edit Profile
                   </Button>
                   <Button
-                    style={{
+                    sx={{
                       color: "white",
                       backgroundColor: "black",
                       borderRadius: "15px",
                       marginTop: "30px",
-                      width: "400px",
+                      width: "100%",
+                      maxWidth: "400px",
                     }}
                     onClick={handleCancelEdit}
                   >
                     Cancel Edit
                   </Button>
                   {deleteMode ? (
-                  <div>
-                    <p className="r-u-sure">Are you sure want to delete this profile?</p>
+                    <div>
+                      <p className="r-u-sure">
+                        Are you sure want to delete this profile?
+                      </p>
+                      <Button
+                        sx={{
+                          color: "white",
+                          backgroundColor: "black",
+                          borderRadius: "15px",
+                          marginTop: "30px",
+                          width: "100%",
+                          maxWidth: "400px",
+                        }}
+                        onClick={handleCancelDel}
+                      >
+                        No, cancel it
+                      </Button>
+                      <Button
+                        sx={{
+                          color: "white",
+                          backgroundColor: "#FF6584",
+                          borderRadius: "15px",
+                          marginTop: "30px",
+                          width: "100%",
+                          maxWidth: "400px",
+                        }}
+                        onClick={handleDeleteProfile}
+                      >
+                        Yes, Delete Account
+                      </Button>
+                    </div>
+                  ) : (
                     <Button
-                      style={{
-                        color: "white",
-                        backgroundColor: "black",
-                        borderRadius: "15px",
-                        marginTop: "30px",
-                        width: "400px",
-                      }}
-                      onClick={handleCancelDel}
-                    >
-                      No, cancel it
-                    </Button>
-                    <Button
-                      style={{
+                      sx={{
                         color: "white",
                         backgroundColor: "#FF6584",
                         borderRadius: "15px",
                         marginTop: "30px",
-                        width: "400px",
+                        width: "100%",
+                        maxWidth: "400px",
                       }}
-                      onClick={handleDeleteProfile}
+                      onClick={handleDelete}
                     >
-                      Yes, Delete Account
+                      Delete Account
                     </Button>
-                  </div>
-                  ) : (
-                  <Button
-                    style={{
-                      color: "white",
-                      backgroundColor: "#FF6584",
-                      borderRadius: "15px",
-                      marginTop: "30px",
-                      width: "400px",
-                    }}
-                    onClick={handleDelete}
-                  >
-                    Delete Account
-                  </Button>
                   )}
                 </div>
               ) : (
                 <div>
                   <TextField
-                    style={{ marginTop: "15px" }}
+                    sx={{ marginTop: "15px" }}
                     variant="standard"
                     fullWidth
                     value={username}
                     disabled={!editMode}
                   />
                   <TextField
-                    style={{ marginTop: "15px" }}
+                    sx={{ marginTop: "15px" }}
                     variant="standard"
                     fullWidth
                     value={email}
                     disabled={!editMode}
                   />
                   <Button
-                    style={{
+                    sx={{
                       color: "white",
                       backgroundColor: "black",
                       borderRadius: "15px",
                       marginTop: "30px",
-                      width: "400px",
+                      width: "100%",
+                      maxWidth: "400px",
                     }}
                     onClick={handleEditProfile}
                   >
