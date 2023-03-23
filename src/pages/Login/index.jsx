@@ -6,6 +6,7 @@ import LogoImg from "../../assets/LOGO1.png";
 import LoginImg from "../../assets/login.png";
 import { useSelector, useDispatch } from "react-redux";
 import { loginPost } from "./reducer";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState("");
@@ -87,7 +88,7 @@ const Login = () => {
         <div className="signin">
           <span>
             doesn&apos;t have an account?{" "}
-            <a href="http://localhost:3000/register">register here</a>
+            <Link to="/register">register here</Link>
           </span>
         </div>
         {error && (

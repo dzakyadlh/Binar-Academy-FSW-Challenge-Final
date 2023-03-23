@@ -23,7 +23,7 @@ const About = () => {
             <ul>
               <li>Agastya Tristyan Dhaniswara</li>
               <li>Dzaky Adla Hikmatiyar</li>
-              <li>Fajar Akvianto Putra</li>
+              <li>Fajar Akvianto Pratama</li>
               <li>Muhammad Haiqal</li>
               <li>Salma Khoerunisa</li>
             </ul>
