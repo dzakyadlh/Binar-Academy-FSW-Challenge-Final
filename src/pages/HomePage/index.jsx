@@ -105,7 +105,10 @@ const HomePage = () => {
         <Grid container spacing={3}>
           {games?.data?.result?.map((row, index) => (
             <Grid key={index} item xs={12} sm={6} md={4}>
-              <Link to={`/gamedetails/${row.id}`}>
+              <Link
+                to={`/gamedetails/${row.id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Card
                   sx={{
                     width: "100%",
