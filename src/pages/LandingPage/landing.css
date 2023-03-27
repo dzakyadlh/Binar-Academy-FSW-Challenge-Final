@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+.gametitle {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1200px) {
   .container-lp {
     flex-direction: column-reverse;
