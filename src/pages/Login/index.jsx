@@ -25,6 +25,10 @@ const Login = () => {
       });
   };
 
+  const handleClick = (link) => {
+    Navigate(link);
+  };
+
   useEffect(() => {
     setError(loginErr);
     setTimeout(() => {
@@ -48,7 +52,11 @@ const Login = () => {
           justifyContent: "center",
         }}
       >
-        <img className="logoo" src={LogoImg} alt=""></img>
+        <img
+          src={LogoImg}
+          className="logoo"
+          onClick={() => handleClick("/")}
+        ></img>
         <h1 className="login">Login</h1>
         <p>Login to access all the features</p>
 

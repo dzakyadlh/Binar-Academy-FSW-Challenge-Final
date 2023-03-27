@@ -52,6 +52,10 @@ const Register = () => {
     }
   };
 
+  const handleClick = (link) => {
+    Navigate(link);
+  };
+
   console.log(register);
 
   return (
@@ -64,7 +68,11 @@ const Register = () => {
           justifyContent: "center",
         }}
       >
-        <img className="logoo" src={LogoImg} alt=""></img>
+        <img
+          src={LogoImg}
+          className="logoo"
+          onClick={() => handleClick("/")}
+        ></img>
         <h1 className="create">Create an account</h1>
         <p>Create an account to access all the features</p>
 

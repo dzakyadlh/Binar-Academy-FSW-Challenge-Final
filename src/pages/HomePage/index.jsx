@@ -112,6 +112,7 @@ const HomePage = () => {
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
+                    textDecoration: "none",
                   }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -123,6 +124,7 @@ const HomePage = () => {
                         textOverflow: "ellipsis",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
+                        textDecoration: "none",
                       }}
                       component="div"
                     >

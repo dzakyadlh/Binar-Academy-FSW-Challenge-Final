@@ -112,6 +112,7 @@ const LandingPage = () => {
               >
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography
+                    className="gametitle"
                     gutterBottom
                     variant="h4"
                     style={{
@@ -119,6 +120,7 @@ const LandingPage = () => {
                       textOverflow: "ellipsis",
                       overflow: "hidden",
                       whiteSpace: "nowrap",
+                      textDecoration: "none",
                     }}
                     component="div"
                   >
