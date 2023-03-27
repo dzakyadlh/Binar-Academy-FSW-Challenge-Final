@@ -41,3 +41,23 @@ li {
   margin-top: 3vh;
   padding: 8px;
 }
+
+@media screen and (max-width: 1200px) {
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8vh;
+  }
+  .container-35 {
+    width: 55vw;
+  }
+
+  .h1 {
+    font-size: 50px;
+  }
+
+  .aboutus {
+    display: none;
+  }
+}

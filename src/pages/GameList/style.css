@@ -14,3 +14,28 @@ body {
   text-decoration: none;
   color: black;
 }
+
+@media (max-width: 1200px) {
+  .container-game-list {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .MuiCard-root {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .MuiCardMedia-root {
+    height: 300px !important;
+  }
+
+  .MuiTypography-root {
+    line-height: 1 !important;
+  }
+}
