@@ -1,13 +1,31 @@
+.container-games {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f0efef;
+  padding-bottom: 15rem;
+  height: 600px;
+  margin: 1rem 10rem;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
 .game {
   display: flex;
   margin-top: 50px;
   flex-wrap: nowrap;
   align-items: center;
+  margin-top: 15rem;
 }
 .game__you {
   display: flex;
   flex-direction: column;
   margin-right: 2.5rem;
+  align-items: center;
 }
 .game__you .text {
   text-transform: uppercase;
@@ -34,8 +52,6 @@
   transform: none !important;
 }
 .game__you .icon--paper--winner {
-  box-shadow: 0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__you .icon--scissors {
@@ -46,9 +62,6 @@
   border-color: #5551ff;
 }
 .game__you .icon--scissors--winner {
-  box-shadow: 0px 0px 0px 50px rgba(255, 255, 255, 0.07),
-    0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__you .icon--rock {
@@ -59,9 +72,6 @@
   border-color: #5551ff;
 }
 .game__you .icon--rock--winner {
-  box-shadow: 0px 0px 0px 50px rgba(255, 255, 255, 0.07),
-    0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__play {
@@ -105,6 +115,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 2.5rem;
+  align-items: center;
 }
 .game__com .text {
   text-transform: uppercase;
@@ -130,9 +141,6 @@
   border-color: #5551ff;
 }
 .game__com .icon--paper--winner {
-  box-shadow: 0px 0px 0px 50px rgba(255, 255, 255, 0.07),
-    0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__com .icon--scissors {
@@ -143,9 +151,6 @@
   border-color: #5551ff;
 }
 .game__com .icon--scissors--winner {
-  box-shadow: 0px 0px 0px 50px rgba(255, 255, 255, 0.07),
-    0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__com .icon--rock {
@@ -156,9 +161,6 @@
   border-color: #5551ff;
 }
 .game__com .icon--rock--winner {
-  box-shadow: 0px 0px 0px 50px rgba(255, 255, 255, 0.07),
-    0px 0px 0px 100px rgba(255, 255, 255, 0.05),
-    0px 0px 0px 150px rgba(255, 255, 255, 0.025);
   border-color: #5aff51;
 }
 .game__com .counter {
@@ -171,4 +173,93 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .container-games {
+    margin: 1rem 1rem;
+    padding-bottom: 10rem;
+  }
+
+  .game {
+    flex-direction: column;
+    margin-top: 15rem;
+  }
+
+  .game__you {
+    margin-right: 0;
+  }
+
+  .game__you .icon {
+    height: 100px;
+    width: 100px;
+    border: 10px solid;
+    border-color: #5551ff;
+  }
+
+  .game__you .icon--paper--winner {
+    border-color: #5aff51;
+  }
+
+  .game__you .icon--scissors--winner {
+    border-color: #5aff51;
+  }
+
+  .game__you .icon--rock--winner {
+    border-color: #5aff51;
+  }
+
+  .game__you .text {
+    margin-bottom: 1rem;
+  }
+
+  .game__play {
+    margin: 1rem 2rem 0 2rem;
+  }
+
+  .game__play .text {
+    font-size: 2rem;
+  }
+
+  .game__play .text__win {
+    font-size: 2rem;
+  }
+
+  .game__play .text__lose {
+    font-size: 2rem;
+  }
+
+  .game__com {
+    margin-left: 0;
+  }
+
+  .game__com .icon {
+    height: 100px;
+    width: 100px;
+    border: 10px solid;
+    border-color: #5551ff;
+  }
+
+  .game__com .icon--paper--winner {
+    border-color: #5aff51;
+  }
+
+  .game__com .icon--scissors--winner {
+    border-color: #5aff51;
+  }
+
+  .game__com .icon--rock--winner {
+    border-color: #5aff51;
+  }
+
+  .game__com .text {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .game__com .counter {
+    height: 100px;
+    width: 100px;
+    font-size: 3rem;
+  }
 }

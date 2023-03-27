@@ -25,6 +25,7 @@
   border: 18px solid;
   border-radius: 50%;
   transition: transform 0.2s;
+  border-color: #5551ff;
 }
 
 .icon--paper {
@@ -32,7 +33,6 @@
   background-image: url(../../../assets/kertas.png);
   background-position: 50%;
   background-repeat: no-repeat;
-  border-color: #5551ff;
   transform: translateX(2rem);
   background-size: 50%;
 }
@@ -46,7 +46,6 @@
   background-image: url(../../../assets/gunting.png);
   background-position: 50%;
   background-repeat: no-repeat;
-  border-color: #5551ff;
   transform: translateX(9rem);
   background-size: 50%;
 }
@@ -60,11 +59,36 @@
   background-image: url(../../../assets/batu.png);
   background-position: 50%;
   background-repeat: no-repeat;
-  border-color: #5551ff;
   transform: translateX(-10rem) translateY(15rem);
   background-size: 50%;
 }
 
 .icon--rock:hover {
   transform: translateX(-10rem) translateY(15rem) scale(1.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .triangle {
+    margin-top: 3rem;
+    max-width: 80%;
+  }
+
+  .icon {
+    height: 90px;
+    width: 90px;
+    border: 10px solid;
+    border-color: #5551ff;
+  }
+
+  .icon--paper {
+    transform: translateX(-0.6rem);
+  }
+
+  .icon--scissors {
+    transform: translateX(6rem);
+  }
+
+  .icon--rock {
+    transform: translateX(-5.7rem) translateY(12.3rem);
+  }
 }
