@@ -26,13 +26,43 @@
 .create {
   font-size: 70px;
 }
+
+@media screen and (max-width: 1200px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logoo {
+    margin-bottom: 40px;
+    width: 120px;
+  }
+
+  .create {
+    font-size: 50px;
+  }
+
+  .rightS img {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 850px) {
+  .app-container {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300%;
+  }
+
   .logoo {
     display: flex;
     justify-content: first baseline;
     align-items: center;
-    margin-bottom: 20px;
-    width: 120px;
+    margin-bottom: 40px;
+    width: 110px;
   }
 
   .create {
@@ -40,17 +70,23 @@
   }
 
   .rightS img {
-    padding-left: 50px;
+    width: 100%;
+    max-width: 300%;
+    padding-right: 15vw;
+    margin-bottom: 10px;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
+  .app-container {
+    padding: 20px 20px;
+  }
   .logoo {
     display: flex;
     justify-content: first baseline;
     align-items: center;
-    margin-bottom: 20px;
-    width: 100px;
+    margin-bottom: 40px;
+    width: 70px;
   }
 
   .create {
@@ -58,6 +94,6 @@
   }
 
   .rightS img {
-    padding-left: 30px;
+    display: none;
   }
 }

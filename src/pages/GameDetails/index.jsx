@@ -12,16 +12,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGameDetails, data } from "./reducer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {BigPlayButton, Player} from "video-react"
-import "./video-react.css"
+import { BigPlayButton, Player } from "video-react";
+import { useMediaQuery } from "@mui/material";
+import "./video-react.css";
 import "./style.css";
 
-const GameDetail = () => {
+const GameDetail = (classes) => {
   const gameDetail = useSelector(data);
   const dispatch = useDispatch();
   let { id } = useParams();
-  const[player, setPlayer] = useState()
+  const [player, setPlayer] = useState();
   const [modal, setModal] = useState(false);
+
+  const mobileSize = useMediaQuery("(max-width: 800px)");
 
   const handleFetch = () => {
     dispatch(getGameDetails(id));
@@ -35,15 +38,15 @@ const GameDetail = () => {
     setModal(!modal);
   };
 
-  if(modal) {
-    document.body.classList.add('active-modal')
+  if (modal) {
+    document.body.classList.add("active-modal");
   } else {
-    document.body.classList.remove('active-modal')
+    document.body.classList.remove("active-modal");
   }
 
   return (
     <div className="container-gd">
-      <Card sx={{ display: "flex", width: 1, height: "450px" }}>
+      <Card sx={{ display: "flex", width: 1 }}>
         <Box sx={{ maxWidth: 1 / 2 }}>
           <CardContent>
             <Typography
@@ -59,7 +62,10 @@ const GameDetail = () => {
               gutterBottom
               variant="h6"
               component="div"
-              sx={{ width: 0.9, ml: 1 }}
+              sx={{
+                width: 0.9,
+                ml: 1,
+              }}
             >
               {gameDetail?.data?.detail}
             </Typography>
@@ -77,7 +83,7 @@ const GameDetail = () => {
             >
               <Link to="/rps">PLAY GAME</Link>
             </Button>
-            <Button 
+            <Button
               size="md"
               style={{
                 fontWeight: "bold",
@@ -85,7 +91,7 @@ const GameDetail = () => {
                 color: "white",
                 width: "40%",
               }}
-              onClick={toggleModal} 
+              onClick={toggleModal}
               sx={{ ml: 1 }}
             >
               Play Trailer
@@ -101,8 +107,7 @@ const GameDetail = () => {
           }}
           image={gameDetail?.data?.image}
           style={{ objectFit: "contain", borderRadius: "10px 0 0 10px" }}
-        >      
-        </CardMedia>  
+        ></CardMedia>
       </Card>
       {modal && (
         <div className="modal">
@@ -110,13 +115,13 @@ const GameDetail = () => {
           <div className="modal-content">
             <h2>Game Trailer</h2>
             <Player
-            ref={(player)=> {
-              setPlayer(player)
-            }}
-            poster={gameDetail?.data?.image}
-            src={gameDetail?.data?.video}
+              ref={(player) => {
+                setPlayer(player);
+              }}
+              poster={gameDetail?.data?.image}
+              src={gameDetail?.data?.video}
             >
-            <BigPlayButton position="center"/>
+              <BigPlayButton position="center" />
             </Player>
             <button className="close-modal" onClick={toggleModal}>
               CLOSE

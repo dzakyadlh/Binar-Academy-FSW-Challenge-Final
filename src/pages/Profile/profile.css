@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 35vw;
-  margin: 1.5vh;
+  margin: 2vh;
   box-sizing: border-box;
 }
 .container-40 {
@@ -22,6 +22,7 @@
 
 .profileimg {
   width: 45vw;
+  margin-top: 2vw;
 }
 
 .r-u-sure {
@@ -32,40 +33,77 @@
   width: 400px;
 }
 
+@media screen and (max-width: 1200px) {
+  .container-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container-35 {
+    width: 70vw;
+  }
+  .logoo {
+    margin-bottom: 40px;
+    width: 120px;
+  }
+
+  .profile {
+    font-size: 50px;
+  }
+
+  .profileimg {
+    display: none;
+  }
+}
 @media screen and (max-width: 850px) {
+  .container-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300%;
+  }
+  .container-40 {
+    margin: 1vh;
+    padding: 1.5vh 0;
+    margin-right: 15vh;
+  }
   .logoo {
     display: flex;
     justify-content: first baseline;
     align-items: center;
-    margin-bottom: 20px;
-    width: 120px;
+    margin-bottom: 40px;
+    width: 110px;
   }
+
   .profile {
     font-size: 40px;
   }
-  .profileimg {
-    padding-left: 20px;
-    margin-top: 50px;
-  }
 
-  .container-profile {
-    margin-top: 20vh;
+  .profileimg {
+    width: 65vw;
+    max-width: 300%;
+    margin-bottom: 10px;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
+  .container-profile {
+    padding: 0px 20px;
+  }
   .logoo {
     display: flex;
     justify-content: first baseline;
     align-items: center;
-    margin-bottom: 20px;
-    width: 100px;
+    margin-bottom: 40px;
+    width: 70px;
   }
+
   .profile {
     font-size: 30px;
   }
+
   .profileimg {
-    padding-left: 10px;
-    margin-top: 80px;
+    display: none;
   }
 }

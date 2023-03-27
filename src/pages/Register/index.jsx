@@ -52,19 +52,27 @@ const Register = () => {
     }
   };
 
+  const handleClick = (link) => {
+    Navigate(link);
+  };
+
   console.log(register);
 
   return (
     <div className="app-container">
       <CardContent
         sx={{
-          paddingBottom: "150px",
+          paddingBottom: "100px",
           fontSize: "20px",
-          width: { xs: 100, sm: 200, md: 300, lg: 400, xl: 500 },
+          width: { lg: 400, xl: 500 },
           justifyContent: "center",
         }}
       >
-        <img className="logoo" src={LogoImg} alt=""></img>
+        <img
+          src={LogoImg}
+          className="logoo"
+          onClick={() => handleClick("/")}
+        ></img>
         <h1 className="create">Create an account</h1>
         <p>Create an account to access all the features</p>
 
@@ -112,8 +120,7 @@ const Register = () => {
         </Button>
         <div className="signin">
           <span>
-            already have an account?{" "}
-            <Link to="/login">log in</Link>
+            already have an account? <Link to="/login">log in</Link>
           </span>
         </div>
         {success && (
