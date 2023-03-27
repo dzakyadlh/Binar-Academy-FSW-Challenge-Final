@@ -44,7 +44,7 @@ const Login = () => {
         sx={{
           paddingBottom: "100px",
           fontSize: "20px",
-          width: { xs: 100, sm: 200, md: 300, lg: 400, xl: 500 },
+          width: { lg: 400, xl: 500 },
           justifyContent: "center",
         }}
       >

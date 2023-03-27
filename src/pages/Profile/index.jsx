@@ -117,7 +117,7 @@ const Profile = () => {
               sx={{
                 paddingBottom: "100px",
                 fontSize: "20px",
-                width: { xs: 150, sm: 250, md: 350, lg: 450, xl: 550 },
+                width: { lg: 400, xl: 500 },
                 justifyContent: "center",
               }}
             >

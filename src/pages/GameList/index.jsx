@@ -39,7 +39,7 @@ const GameList = () => {
       {games?.data?.result?.map((row, index) => (
         <Card
           key={index}
-          sx={{ display: "flex", width: 1, minHeight: "400px" }}
+          sx={{ display: "flex", width: 1, minHeight: "300px" }}
         >
           <Box sx={{ width: "50%" }}>
             <CardContent>

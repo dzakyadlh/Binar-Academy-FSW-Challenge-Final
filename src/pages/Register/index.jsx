@@ -58,9 +58,9 @@ const Register = () => {
     <div className="app-container">
       <CardContent
         sx={{
-          paddingBottom: "150px",
+          paddingBottom: "100px",
           fontSize: "20px",
-          width: { xs: 100, sm: 200, md: 300, lg: 400, xl: 500 },
+          width: { lg: 400, xl: 500 },
           justifyContent: "center",
         }}
       >
@@ -112,8 +112,7 @@ const Register = () => {
         </Button>
         <div className="signin">
           <span>
-            already have an account?{" "}
-            <Link to="/login">log in</Link>
+            already have an account? <Link to="/login">log in</Link>
           </span>
         </div>
         {success && (
